@@ -391,11 +391,6 @@ const TerminalHero: React.FC = () => {
 // ─── Project Card ─────────────────────────────────────────────────────────────
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   const [xray, setXray] = useState(false);
-  const [githubSrc, setGithubSrs] = useState({
-    0 : "https://github.com/moi-script/YourCeipt",
-    1 : "https://github.com/moi-script/engineering_portal",
-    2 : "https://github.com/moi-script/Trigger_Game_Project",
-  })
 
   return (
     <div style={{

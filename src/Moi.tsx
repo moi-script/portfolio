@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import profileImg from './assets/profile_pic.png';
 // NOTE: Images are imported from your assets folder
@@ -6,7 +6,8 @@ import profileImg from './assets/profile_pic.png';
 import receptaImg from './assets/recepta.png';
 import triggerImg from './assets/trigger_game.png';
 import portalImg from './assets/engr_portal.png';
-
+import HireMeModal from "./Hire";
+// import cvFile from '../public/Moises_Nugal_CV.docx';
 // ─── Types ────────────────────────────────────────────────────────────────────
 interface Project {
   name: string;
@@ -193,7 +194,7 @@ const JourneyDot: React.FC<{ active: boolean; color: string }> = ({ active, colo
 );
 
 // ─── Project Card (Journey-focused) ──────────────────────────────────────────
-const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project }) => {
   const [xray, setXray] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [activeJourneyStep, setActiveJourneyStep] = useState(0);
@@ -481,6 +482,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           </a>
         </div>
       </div>
+
     </div>
   );
 };
@@ -558,7 +560,8 @@ export default function MoiPortfolio() {
   const [typed, setTyped] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [activeModule, setActiveModule] = useState<number | null>(null);
-  const [heroXray, setHeroXray] = useState(false);
+  // const [heroXray, setHeroXray] = useState(false);
+  const [hireMeOpen, setHireMeOpen] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => setTyped(p => Math.min(p + 1, 250)), 16);
@@ -747,21 +750,23 @@ export default function MoiPortfolio() {
             onMouseLeave={e => e.currentTarget.style.color = "#475569"}
             >{item}</a>
           ))}
-          <button style={{
-            padding: "8px 18px",
-            background: "transparent",
-            border: "1px solid rgba(0,255,136,0.35)",
-            borderRadius: "6px",
-            color: "#00ff88",
-            fontSize: "11px",
-            fontFamily: "'Fira Code', monospace",
-            cursor: "pointer",
-            letterSpacing: "0.08em",
-            transition: "all 0.2s",
-          }}
-          onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,255,136,0.08)"; }}
-          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
-          >Hire Me</button>
+          <button
+  onClick={() => setHireMeOpen(true)}
+  style={{
+    padding: "8px 18px",
+    background: "transparent",
+    border: "1px solid rgba(0,255,136,0.35)",
+    borderRadius: "6px",
+    color: "#00ff88",
+    fontSize: "11px",
+    fontFamily: "'Fira Code', monospace",
+    cursor: "pointer",
+    letterSpacing: "0.08em",
+    transition: "all 0.2s",
+  }}
+  onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,255,136,0.08)"; }}
+  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+>Hire Me</button>
         </div>
       </nav>
 
@@ -831,7 +836,7 @@ export default function MoiPortfolio() {
           <TypewriterLine text="Computer Engineering student building systems that optimize daily performance." delay={70} typed={typed} color="#64748b" />
           <TypewriterLine text="> Stack: MongoDB · Express · React · Typescript · Node.js · Javascript · SpringBoot · Java · Python" delay={110} typed={typed} color="#60a5fa" />
           <TypewriterLine text="> Services: Cloudinary · Tesseract.js · Scribe.js · Tavily · Vercel · Render · Azure" delay={110} typed={typed} color="#60a5fa" />
-          <TypewriterLine text="> Philosophy: Always start in fundamentals" delay={170} typed={typed} color="#00ff88" />
+          <TypewriterLine text="> Philosophy: Always start with the fundamentals." delay={170} typed={typed} color="#00ff88" />
 
           <div style={{
             display: "flex", gap: "12px", marginTop: "36px", flexWrap: "wrap",
@@ -840,9 +845,10 @@ export default function MoiPortfolio() {
           }}>
             {[
               { label: "View Projects", href: "#projects", primary: true },
-              { label: "Download CV", href: "#", primary: false },
+              // { label: "Download CV", href: "#", primary: false },
+              { label: "Download CV", href: "public/Moises_Nugal_CV_Polished.docx", primary: false, download: "Moises_Nugal_CV.docx" },
             ].map(btn => (
-              <a key={btn.label} href={btn.href} style={{
+              <a  key={btn.label} href={btn.href} download={btn.download || undefined} style={{
                 padding: "13px 30px",
                 background: btn.primary ? "#00ff88" : "transparent",
                 color: btn.primary ? "#04070e" : "#00ff88",
@@ -1212,6 +1218,9 @@ export default function MoiPortfolio() {
           color: "#1e293b",
         }}> <span style={{ color: "#22c55e" }}>●</span></span>
       </footer>
+
+      <HireMeModal isOpen={hireMeOpen} onClose={() => setHireMeOpen(false)} />
+    
     </div>
   );
 }
