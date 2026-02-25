@@ -562,6 +562,7 @@ export default function MoiPortfolio() {
   const [activeModule, setActiveModule] = useState<number | null>(null);
   // const [heroXray, setHeroXray] = useState(false);
   const [hireMeOpen, setHireMeOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => setTyped(p => Math.min(p + 1, 250)), 16);
@@ -658,6 +659,8 @@ export default function MoiPortfolio() {
           0% { transform: translateY(0); opacity: 1; }
           100% { transform: translateY(200px); opacity: 0; }
         }
+        @keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+        .mobile-nav-open { animation: slideDown 0.25s cubic-bezier(0.4,0,0.2,1) forwards; }
         @keyframes gridPulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.6; }
@@ -684,6 +687,8 @@ export default function MoiPortfolio() {
         }
 
         @media (max-width: 768px) {
+         .hamburger-btn { display: flex !important; }
+          nav { padding: 0 24px !important; }
           .project-grid {
             grid-template-columns: 1fr;
           }
@@ -692,6 +697,18 @@ export default function MoiPortfolio() {
           .section-pad { padding: 60px 24px !important; }
           .about-modules { flex-direction: column !important; }
         }
+
+        @media (max-width: 768px) {
+           .project-grid {
+              grid-template-columns: 1fr;
+             }
+           .nav-links { display: none !important; }
+           .hamburger-btn { display: flex !important; }
+           nav { padding: 0 24px !important; }
+           .hero-section { padding: 100px 24px 60px !important; }
+           .section-pad { padding: 60px 24px !important; }
+          .about-modules { flex-direction: column !important; }
+          }
       `}</style>
 
       {/* Background grid */}
@@ -717,58 +734,207 @@ export default function MoiPortfolio() {
         pointerEvents: "none", zIndex: 0,
       }} />
 
-      {/* Navigation */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "0 48px",
-        height: "64px",
-        background: scrolled ? "rgba(4,7,14,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none",
-        transition: "all 0.3s",
-      }}>
-        <span style={{
-          fontFamily: "'Fira Code', monospace",
-          fontSize: "14px",
-          color: "#00ff88",
-          letterSpacing: "0.1em",
-          fontWeight: 500,
-        }}>moi.dev<span style={{ animation: "blink 1.2s infinite", marginLeft: "2px" }}>_</span></span>
+     
 
-        <div className="nav-links" style={{ display: "flex", gap: "36px", alignItems: "center" }}>
-          {["Projects", "Journey", "About", "Contact"].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} style={{
-              color: "#475569",
-              textDecoration: "none",
-              fontSize: "12px",
-              fontFamily: "'Fira Code', monospace",
-              letterSpacing: "0.06em",
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = "#e2e8f0"}
-            onMouseLeave={e => e.currentTarget.style.color = "#475569"}
-            >{item}</a>
-          ))}
-          <button
-  onClick={() => setHireMeOpen(true)}
-  style={{
-    padding: "8px 18px",
-    background: "transparent",
-    border: "1px solid rgba(0,255,136,0.35)",
-    borderRadius: "6px",
-    color: "#00ff88",
-    fontSize: "11px",
+      <nav style={{
+  position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+  display: "flex", justifyContent: "space-between", alignItems: "center",
+  padding: "0 48px",
+  height: "64px",
+  background: scrolled || mobileMenuOpen ? "rgba(4,7,14,0.96)" : "transparent",
+  backdropFilter: scrolled || mobileMenuOpen ? "blur(20px)" : "none",
+  borderBottom: scrolled || mobileMenuOpen ? "1px solid rgba(255,255,255,0.05)" : "none",
+  transition: "all 0.3s",
+}}>
+  {/* Logo */}
+  <span style={{
     fontFamily: "'Fira Code', monospace",
-    cursor: "pointer",
-    letterSpacing: "0.08em",
-    transition: "all 0.2s",
-  }}
-  onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,255,136,0.08)"; }}
-  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
->Hire Me</button>
-        </div>
-      </nav>
+    fontSize: "14px",
+    color: "#00ff88",
+    letterSpacing: "0.1em",
+    fontWeight: 500,
+  }}>moi.dev<span style={{ animation: "blink 1.2s infinite", marginLeft: "2px" }}>_</span></span>
+
+  {/* Desktop links — hidden on mobile via class */}
+  <div className="nav-links" style={{ display: "flex", gap: "36px", alignItems: "center" }}>
+    {["Projects", "Journey", "About", "Contact"].map(item => (
+      <a key={item} href={`#${item.toLowerCase()}`} style={{
+        color: "#475569",
+        textDecoration: "none",
+        fontSize: "12px",
+        fontFamily: "'Fira Code', monospace",
+        letterSpacing: "0.06em",
+        transition: "color 0.2s",
+      }}
+      onMouseEnter={e => e.currentTarget.style.color = "#e2e8f0"}
+      onMouseLeave={e => e.currentTarget.style.color = "#475569"}
+      >{item}</a>
+    ))}
+    <button
+      onClick={() => setHireMeOpen(true)}
+      style={{
+        padding: "8px 18px",
+        background: "transparent",
+        border: "1px solid rgba(0,255,136,0.35)",
+        borderRadius: "6px",
+        color: "#00ff88",
+        fontSize: "11px",
+        fontFamily: "'Fira Code', monospace",
+        cursor: "pointer",
+        letterSpacing: "0.08em",
+        transition: "all 0.2s",
+      }}
+      onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,255,136,0.08)"; }}
+      onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+    >Hire Me</button>
+  </div>
+
+  {/* Hamburger button — visible only on mobile */}
+  <button
+    className="hamburger-btn"
+    onClick={() => setMobileMenuOpen(v => !v)}
+    aria-label="Toggle menu"
+    style={{
+      display: "none",           // shown via CSS media query below
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "5px",
+      width: "40px",
+      height: "40px",
+      background: "transparent",
+      border: "1px solid rgba(255,255,255,0.08)",
+      borderRadius: "8px",
+      cursor: "pointer",
+      padding: "0",
+      transition: "border-color 0.2s",
+    }}
+    onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(0,255,136,0.35)"; }}
+    onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"; }}
+  >
+    {/* Three bars that morph to X */}
+    {[0, 1, 2].map(i => (
+      <span key={i} style={{
+        display: "block",
+        width: "18px",
+        height: "1.5px",
+        background: mobileMenuOpen ? "#00ff88" : "#64748b",
+        borderRadius: "2px",
+        transformOrigin: "center",
+        transition: "all 0.25s cubic-bezier(0.4,0,0.2,1)",
+        transform: mobileMenuOpen
+          ? i === 0 ? "translateY(6.5px) rotate(45deg)"
+          : i === 2 ? "translateY(-6.5px) rotate(-45deg)"
+          : "scaleX(0) opacity(0)"
+          : "none",
+        opacity: mobileMenuOpen && i === 1 ? 0 : 1,
+      }} />
+    ))}
+  </button>
+
+  {/* Mobile Dropdown Menu */}
+  {mobileMenuOpen && (
+    <div
+      className="mobile-nav-open"
+      style={{
+        position: "fixed",
+        top: "64px",
+        left: 0,
+        right: 0,
+        background: "rgba(4,7,14,0.97)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        backdropFilter: "blur(24px)",
+        padding: "20px 24px 28px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "4px",
+        zIndex: 99,
+      }}
+    >
+      {["Projects", "Journey", "About", "Contact"].map(item => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          onClick={() => setMobileMenuOpen(false)}
+          style={{
+            color: "#64748b",
+            textDecoration: "none",
+            fontSize: "13px",
+            fontFamily: "'Fira Code', monospace",
+            letterSpacing: "0.08em",
+            padding: "13px 16px",
+            borderRadius: "8px",
+            border: "1px solid transparent",
+            transition: "all 0.2s",
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.color = "#00ff88";
+            e.currentTarget.style.background = "rgba(0,255,136,0.05)";
+            e.currentTarget.style.borderColor = "rgba(0,255,136,0.15)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = "#64748b";
+            e.currentTarget.style.background = "transparent";
+            e.currentTarget.style.borderColor = "transparent";
+          }}
+        >
+          <span style={{ color: "rgba(0,255,136,0.4)", marginRight: "10px" }}>//</span>
+          {item}
+        </a>
+      ))}
+
+      {/* Divider */}
+      <div style={{
+        height: "1px",
+        background: "rgba(255,255,255,0.05)",
+        margin: "8px 0",
+      }} />
+
+      {/* Hire Me in mobile menu */}
+      <button
+        onClick={() => { setHireMeOpen(true); setMobileMenuOpen(false); }}
+        style={{
+          padding: "13px 16px",
+          background: "rgba(0,255,136,0.07)",
+          border: "1px solid rgba(0,255,136,0.25)",
+          borderRadius: "8px",
+          color: "#00ff88",
+          fontSize: "12px",
+          fontFamily: "'Fira Code', monospace",
+          cursor: "pointer",
+          letterSpacing: "0.08em",
+          textAlign: "left",
+          transition: "all 0.2s",
+        }}
+        onMouseEnter={e => { e.currentTarget.style.background = "rgba(0,255,136,0.12)"; }}
+        onMouseLeave={e => { e.currentTarget.style.background = "rgba(0,255,136,0.07)"; }}
+      >
+        ◉ Hire Me
+      </button>
+
+      {/* Quick contact pills */}
+      <div style={{
+        display: "flex",
+        gap: "8px",
+        marginTop: "8px",
+        flexWrap: "wrap",
+      }}>
+        {["github.com/moi-script", "nugalmoises62@gmail.com"].map(txt => (
+          <span key={txt} style={{
+            fontFamily: "'Fira Code', monospace",
+            fontSize: "9px",
+            color: "#1e3a4a",
+            letterSpacing: "0.06em",
+          }}>{txt}</span>
+        ))}
+      </div>
+    </div>
+  )}
+</nav>
+
+
+
+
 
     
 
