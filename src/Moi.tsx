@@ -846,7 +846,7 @@ export default function MoiPortfolio() {
             {[
               { label: "View Projects", href: "#projects", primary: true },
               // { label: "Download CV", href: "#", primary: false },
-              { label: "Download CV", href: "public/Moises_Nugal_CV_Polished.docx", primary: false, download: "Moises_Nugal_CV.docx" },
+              { label: "Download CV", href: "/Moises_Nugal_CV_Polished.docx", primary: false, download: "Moises_Nugal_CV.docx" },
             ].map(btn => (
               <a  key={btn.label} href={btn.href} download={btn.download || undefined} style={{
                 padding: "13px 30px",
