@@ -23,6 +23,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return <Ctx.Provider value={{ theme, toggle }}>{children}</Ctx.Provider>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- co-located hook, pre-existing from theme setup (Task 3)
 export function useTheme(): ThemeCtx {
   const v = useContext(Ctx)
   if (!v) throw new Error('useTheme must be used within ThemeProvider')

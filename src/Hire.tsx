@@ -63,10 +63,10 @@ const MessageBubble: React.FC<{ msg: Message }> = ({ msg }) => {
     const parts = text.split(/(\*\*[^*]+\*\*|_[^_]+_)/g);
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={i} style={{ color: isAssistant ? ACCENT : "#f1f5f9", fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
+        return <strong key={i} style={{ color: isAssistant ? "var(--accent-2)" : "var(--fg)", fontWeight: 700 }}>{part.slice(2, -2)}</strong>;
       }
       if (part.startsWith("_") && part.endsWith("_")) {
-        return <em key={i} style={{ color: "#475569", fontStyle: "italic" }}>{part.slice(1, -1)}</em>;
+        return <em key={i} style={{ color: "var(--fg-muted)", fontStyle: "italic" }}>{part.slice(1, -1)}</em>;
       }
       return <span key={i}>{part}</span>;
     });
@@ -108,7 +108,7 @@ const MessageBubble: React.FC<{ msg: Message }> = ({ msg }) => {
         <p style={{
           margin: 0,
           fontSize: "13px",
-          color: isAssistant ? "#94a3b8" : "#cbd5e1",
+          color: isAssistant ? "var(--fg-muted)" : "var(--fg)",
           lineHeight: 1.7,
           fontFamily: "'DM Sans', sans-serif",
           whiteSpace: "pre-line",
@@ -119,7 +119,7 @@ const MessageBubble: React.FC<{ msg: Message }> = ({ msg }) => {
           display: "block",
           marginTop: "6px",
           fontSize: "9px",
-          color: "#1e293b",
+          color: "var(--fg-faint)",
           fontFamily: "'Fira Code', monospace",
           textAlign: isAssistant ? "left" : "right",
         }}>{msg.timestamp}</span>
@@ -143,24 +143,36 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Init on open
+  // Reset conversation state whenever the modal transitions to open.
+  // Done during render (not in an effect) to avoid an extra cascading render.
+  const [prevIsOpen, setPrevIsOpen] = useState(false);
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) {
+      setMessages([]);
+      setStep(0);
+      setAnswers([]);
+      setIsDone(false);
+      setIsMinimized(false);
+      setDragPos({ x: 0, y: 0 });
+    }
+  }
+
+  // Kick off the first assistant message after a short delay once open.
   useEffect(() => {
     if (!isOpen) return;
-    setMessages([]);
-    setStep(0);
-    setAnswers([]);
-    setIsDone(false);
-    setIsMinimized(false);
-    setDragPos({ x: 0, y: 0 });
-
-    // Show first message after a short delay
-    setTimeout(() => {
+    let typeTimer: ReturnType<typeof setTimeout>;
+    const openTimer = setTimeout(() => {
       setIsTyping(true);
-      setTimeout(() => {
+      typeTimer = setTimeout(() => {
         setIsTyping(false);
         setMessages([{ role: "assistant", content: QUESTIONS[0], timestamp: getTime() }]);
       }, 1200);
     }, 300);
+    return () => {
+      clearTimeout(openTimer);
+      clearTimeout(typeTimer);
+    };
   }, [isOpen]);
 
   // Auto scroll
@@ -248,7 +260,7 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        .hire-input::placeholder { color: #1e293b !important; }
+        .hire-input::placeholder { color: var(--fg-faint) !important; }
         .hire-input:focus { outline: none; }
       `}</style>
 
@@ -257,7 +269,7 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
         onClick={onClose}
         style={{
           position: "fixed", inset: 0, zIndex: 999,
-          background: "rgba(4,7,14,0.6)",
+          background: "var(--scrim)",
           backdropFilter: "blur(6px)",
           animation: "backdropIn 0.3s ease",
         }}
@@ -275,10 +287,10 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
           left: "50%",
           transform: `translate(calc(-50% + ${dragPos.x}px), calc(-50% + ${dragPos.y}px))`,
           width: "min(480px, 94vw)",
-          background: "rgba(6, 10, 20, 0.98)",
-          border: `1px solid rgba(0,255,136,0.18)`,
+          background: "var(--bg-elev)",
+          border: `1px solid var(--border)`,
           borderRadius: "16px",
-          boxShadow: `0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04), 0 0 60px rgba(0,255,136,0.04)`,
+          boxShadow: "var(--shadow)",
           overflow: "hidden",
           animation: "modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
           userSelect: isDragging ? "none" : "auto",
@@ -290,8 +302,8 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
           style={{
             display: "flex", alignItems: "center", justifyContent: "space-between",
             padding: "12px 16px",
-            background: "rgba(255,255,255,0.02)",
-            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            background: "transparent",
+            borderBottom: "1px solid var(--border)",
             cursor: isDragging ? "grabbing" : "grab",
             userSelect: "none",
           }}
@@ -322,13 +334,13 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
             display: "flex", alignItems: "center", gap: "8px",
             fontFamily: "'Fira Code', monospace",
             fontSize: "11px",
-            color: "#475569",
+            color: "var(--fg-muted)",
             letterSpacing: "0.06em",
           }}>
             <span style={{
               width: "7px", height: "7px", borderRadius: "50%",
-              background: isDone ? "#4ade80" : ACCENT,
-              boxShadow: `0 0 8px ${isDone ? "#4ade80" : ACCENT}`,
+              background: isDone ? "#4ade80" : "var(--accent-2)",
+              boxShadow: `0 0 8px ${isDone ? "#4ade80" : "var(--accent-2)"}`,
               animation: isDone ? "none" : "typingBounce 2s ease-in-out infinite",
             }} />
             friday — hiring assistant
@@ -338,7 +350,7 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
           <div style={{
             fontFamily: "'Fira Code', monospace",
             fontSize: "9px",
-            color: "#1e293b",
+            color: "var(--fg-faint)",
             letterSpacing: "0.08em",
           }}>
             {isDone ? "SENT ✓" : `STEP ${Math.min(step + 1, 3)}/3`}
@@ -349,11 +361,11 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
         {!isMinimized && (
           <>
             {/* Progress bar */}
-            <div style={{ height: "2px", background: "rgba(255,255,255,0.04)" }}>
+            <div style={{ height: "2px", background: "var(--border)" }}>
               <div style={{
                 height: "100%",
                 width: `${isDone ? 100 : (step / 3) * 100}%`,
-                background: `linear-gradient(90deg, ${ACCENT}, ${ACCENT_BLUE})`,
+                background: `linear-gradient(90deg, var(--accent-2), ${ACCENT_BLUE})`,
                 transition: "width 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
               }} />
             </div>
@@ -392,15 +404,15 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
             </div>
 
             {/* Divider */}
-            <div style={{ height: "1px", background: "rgba(255,255,255,0.05)", margin: "0 16px" }} />
+            <div style={{ height: "1px", background: "var(--border)", margin: "0 16px" }} />
 
             {/* Input Area */}
             <div style={{ padding: "14px 16px" }}>
               {!isDone ? (
                 <div style={{
                   display: "flex", gap: "10px", alignItems: "center",
-                  background: "rgba(255,255,255,0.02)",
-                  border: `1px solid rgba(255,255,255,0.07)`,
+                  background: "transparent",
+                  border: `1px solid var(--border)`,
                   borderRadius: "10px",
                   padding: "10px 14px",
                   transition: "border-color 0.2s",
@@ -410,7 +422,7 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
                   <span style={{
                     fontFamily: "'Fira Code', monospace",
                     fontSize: "12px",
-                    color: "#00ff8844",
+                    color: "var(--accent-2)",
                     flexShrink: 0,
                   }}>›</span>
                   <input
@@ -428,8 +440,8 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
                       outline: "none",
                       fontFamily: "'Fira Code', monospace",
                       fontSize: "12px",
-                      color: "#cbd5e1",
-                      caretColor: ACCENT,
+                      color: "var(--fg)",
+                      caretColor: "var(--accent-2)",
                     }}
                   />
                   <button
@@ -438,11 +450,11 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
                     style={{
                       display: "flex", alignItems: "center", justifyContent: "center",
                       width: "32px", height: "32px",
-                      background: input.trim() && !isTyping ? `${ACCENT}18` : "transparent",
-                      border: `1px solid ${input.trim() && !isTyping ? ACCENT + "55" : "rgba(255,255,255,0.06)"}`,
+                      background: input.trim() && !isTyping ? "rgba(47,107,255,0.12)" : "transparent",
+                      border: `1px solid ${input.trim() && !isTyping ? "var(--accent-2)" : "var(--border)"}`,
                       borderRadius: "7px",
                       cursor: input.trim() && !isTyping ? "pointer" : "default",
-                      color: input.trim() && !isTyping ? ACCENT : "#1e293b",
+                      color: input.trim() && !isTyping ? "var(--accent-2)" : "var(--fg-faint)",
                       fontSize: "13px",
                       transition: "all 0.2s",
                       flexShrink: 0,
@@ -490,7 +502,7 @@ export const HireMeModal: React.FC<HireMeModalProps> = ({ isOpen, onClose }) => 
                 margin: "10px 0 0",
                 fontFamily: "'Fira Code', monospace",
                 fontSize: "9px",
-                color: "#1e293b",
+                color: "var(--fg-faint)",
                 textAlign: "center",
                 letterSpacing: "0.06em",
               }}>

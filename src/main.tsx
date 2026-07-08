@@ -3,13 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import './theme/tokens.css'
 import { ThemeProvider } from './theme/ThemeContext'
-// import App from './App.tsx'
-// import MoiPortfolio from './App.tsx'
-import MoiPortfolio from './Moi.tsx'
+import App from './App.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <MoiPortfolio />
+      <App />
     </ThemeProvider>
   </StrictMode>
 )
