@@ -10,7 +10,7 @@ import { ContactContent } from './content/ContactContent'
 
 export interface PageDef {
   section: SectionId
-  render: () => ReactNode | null
+  render: (onNavigate?: (s: SectionId) => void) => ReactNode | null
 }
 
 // One renderer per SPREADS index, in order. The two 'story' spreads differ by part.
@@ -18,7 +18,7 @@ let storyPart = 0
 export const PAGES: PageDef[] = SPREADS.map((section): PageDef => {
   switch (section) {
     case 'intro':
-      return { section, render: () => <IntroContent /> }
+      return { section, render: (onNavigate) => <IntroContent onNavigate={onNavigate} /> }
     case 'ledger':
       return { section, render: () => <LedgerContent /> }
     case 'story': {

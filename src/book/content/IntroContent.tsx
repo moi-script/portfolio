@@ -1,4 +1,5 @@
 import { ProfileMedallion } from './ProfileMedallion'
+import type { SectionId } from '../navMap'
 
 const CTA: React.CSSProperties = {
   padding: '11px 22px',
@@ -11,7 +12,7 @@ const CTA: React.CSSProperties = {
   display: 'inline-block',
 }
 
-export function IntroContent() {
+export function IntroContent({ onNavigate }: { onNavigate?: (s: SectionId) => void }) {
   return (
     <div style={{ display: 'flex', gap: 28, alignItems: 'center', flexWrap: 'wrap' }}>
       <ProfileMedallion size={170} />
@@ -35,7 +36,13 @@ export function IntroContent() {
           MongoDB · Express · React · TypeScript · Node.js · Python
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-          <a href="#work" style={{ ...CTA, background: 'var(--gold-deep)', color: '#fff' }}>View work</a>
+          <button
+            type="button"
+            onClick={() => onNavigate?.('work')}
+            style={{ ...CTA, background: 'var(--gold-deep)', color: '#fff', border: 'none', fontFamily: "'DM Sans', sans-serif" }}
+          >
+            View work
+          </button>
           <a
             href="/Moises_Nugal_CV_Polished.docx"
             download="Moises_Nugal_CV.docx"

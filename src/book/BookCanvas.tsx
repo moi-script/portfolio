@@ -79,7 +79,7 @@ export function BookCanvas() {
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <Canvas camera={{ position: [1.2, 0, 8], fov: 40 }}>
           <Backdrop />
-          <Book progress={progress} />
+          <Book progress={progress} onNavigate={jumpTo} />
         </Canvas>
       </div>
     </>

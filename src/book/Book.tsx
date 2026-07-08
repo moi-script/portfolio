@@ -1,12 +1,12 @@
 import { Page } from './Page'
 import { BookChrome } from './BookChrome'
 import { pageProgressToTurn, nearestSpread } from './pageMath'
-import { SPREADS } from './navMap'
+import { SPREADS, type SectionId } from './navMap'
 import { PAGES } from './pages'
 
 const Z_STEP = 0.01
 
-export function Book({ progress }: { progress: number }) {
+export function Book({ progress, onNavigate }: { progress: number; onNavigate?: (s: SectionId) => void }) {
   const settled = nearestSpread(progress)
   const isSettled = Math.abs(progress - settled) < 0.02
 
@@ -25,6 +25,7 @@ export function Book({ progress }: { progress: number }) {
             z={z}
             isResting={showsContent}
             content={PAGES[i]?.render}
+            onNavigate={onNavigate}
           />
         )
       })}

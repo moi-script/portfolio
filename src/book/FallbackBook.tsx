@@ -11,7 +11,7 @@ export function FallbackBook() {
     <div style={{ minHeight: '100vh', background: 'var(--room-bg)', padding: '88px 16px 60px' }}>
       <NavOverlay onJump={jumpTo} />
       {PAGES.map((p, i) => {
-        const node = p.render()
+        const node = p.render(jumpTo)
         if (!node) return null
         return (
           <ParchmentCard key={i} id={`spread-${i}`}>
