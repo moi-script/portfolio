@@ -29,6 +29,16 @@
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
+/* On-image tokens — theme-independent. Used for caption badges that sit
+   on top of a project photo (dark scrim + light text), so they must stay
+   readable in BOTH light and dark themes. Deliberately not overridden per theme. */
+:root {
+  --scrim: rgba(4, 7, 14, 0.75);
+  --scrim-border: rgba(255, 255, 255, 0.18);
+  --on-image: #f1f5f9;
+  --on-image-muted: #e2e8f0;
+}
+
 * { box-sizing: border-box; }
 html { color-scheme: light dark; }
 body { margin: 0; background: var(--bg); color: var(--fg); transition: background 0.4s, color 0.4s; }

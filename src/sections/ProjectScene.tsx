@@ -84,14 +84,14 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
           top: 14,
           left: 14,
           zIndex: 5,
-          background: isInDevelopment ? `${accent}22` : 'rgba(4,7,14,0.75)',
-          border: `1px solid ${isInDevelopment ? accent : 'rgba(255,255,255,0.3)'}`,
+          background: isInDevelopment ? `${accent}22` : 'var(--scrim)',
+          border: `1px solid ${isInDevelopment ? accent : 'var(--scrim-border)'}`,
           borderRadius: 6,
           padding: '4px 10px',
           fontFamily: "'Fira Code', monospace",
           fontSize: 10,
           fontWeight: isInDevelopment ? 600 : 400,
-          color: isInDevelopment ? accent : '#f1f5f9',
+          color: isInDevelopment ? accent : 'var(--on-image)',
           letterSpacing: '0.1em',
         }}
       >
@@ -114,9 +114,9 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
           <span
             key={tag}
             style={{
-              background: 'rgba(4,7,14,0.75)',
-              border: '1px solid rgba(255,255,255,0.16)',
-              color: '#e2e8f0',
+              background: 'var(--scrim)',
+              border: '1px solid var(--scrim-border)',
+              color: 'var(--on-image-muted)',
               fontSize: 9,
               padding: '3px 8px',
               borderRadius: 4,
