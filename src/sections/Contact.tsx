@@ -6,7 +6,7 @@ const links = [
   { label: 'linkedin.com/in/moi', icon: '⊞', href: 'https://www.linkedin.com/in/moises-nugal-1b06833b1' },
 ]
 
-export function Contact({ onHireClick }: { onHireClick: () => void }) {
+export function Contact() {
   return (
     <section id="contact" style={{ position: 'relative' }}>
       <div style={{ maxWidth: 1300, margin: '0 auto', padding: '80px 48px 120px', textAlign: 'center' }}>
@@ -50,8 +50,8 @@ export function Contact({ onHireClick }: { onHireClick: () => void }) {
             Open to internships, freelance projects, and anything that needs a fresh engineer's perspective.
           </p>
 
-          <button
-            onClick={onHireClick}
+          <a
+            href="mailto:nugalmoises62@gmail.com?subject=Let's%20build%20something"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -66,6 +66,7 @@ export function Contact({ onHireClick }: { onHireClick: () => void }) {
               fontWeight: 600,
               fontFamily: "'Fira Code', monospace",
               letterSpacing: '0.04em',
+              textDecoration: 'none',
               cursor: 'pointer',
               transition: 'transform 0.2s, opacity 0.2s',
             }}
@@ -79,7 +80,7 @@ export function Contact({ onHireClick }: { onHireClick: () => void }) {
             }}
           >
             Hire Me
-          </button>
+          </a>
 
           <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             {links.map((link) => (

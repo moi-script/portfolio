@@ -3,7 +3,7 @@ import { ThemeToggle } from './ThemeToggle'
 
 const NAV_LINKS = ['Story', 'Work', 'About', 'Contact']
 
-export function Nav({ onHireClick }: { onHireClick: () => void }) {
+export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -37,6 +37,8 @@ export function Nav({ onHireClick }: { onHireClick: () => void }) {
           cursor: pointer;
           letter-spacing: 0.08em;
           transition: background 0.2s;
+          text-decoration: none;
+          display: inline-block;
         }
         .hire-btn-desktop:hover {
           background: color-mix(in srgb, var(--accent-2) 8%, transparent);
@@ -89,6 +91,9 @@ export function Nav({ onHireClick }: { onHireClick: () => void }) {
           text-align: left;
           transition: background 0.2s;
           width: 100%;
+          text-decoration: none;
+          display: block;
+          box-sizing: border-box;
         }
         .hire-btn-mobile:hover { background: color-mix(in srgb, var(--accent-2) 12%, transparent); }
 
@@ -126,7 +131,7 @@ export function Nav({ onHireClick }: { onHireClick: () => void }) {
             <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">{item}</a>
           ))}
           <ThemeToggle />
-          <button className="hire-btn-desktop" onClick={onHireClick}>Hire Me</button>
+          <a className="hire-btn-desktop" href="#contact">Hire Me</a>
         </div>
 
         {/* Hamburger button — visible only on mobile */}
@@ -194,12 +199,13 @@ export function Nav({ onHireClick }: { onHireClick: () => void }) {
             }} />
 
             {/* Hire Me in mobile menu */}
-            <button
+            <a
               className="hire-btn-mobile"
-              onClick={() => { onHireClick(); setMobileMenuOpen(false) }}
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
             >
               ◉ Hire Me
-            </button>
+            </a>
 
             {/* Quick contact pills */}
             <div style={{
