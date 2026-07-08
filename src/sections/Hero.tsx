@@ -11,10 +11,10 @@ const calendarTheme = {
 const CTA_BASE: CSSProperties = {
   padding: '13px 30px',
   borderRadius: '8px',
-  fontFamily: "'Fira Code', monospace",
-  fontSize: '12px',
-  fontWeight: 700,
-  letterSpacing: '0.05em',
+  fontFamily: "'DM Sans', sans-serif",
+  fontSize: '14px',
+  fontWeight: 600,
+  letterSpacing: '0.02em',
   textDecoration: 'none',
   display: 'inline-block',
   cursor: 'pointer',
@@ -58,20 +58,6 @@ export function Hero() {
       />
 
       <div style={{ maxWidth: 720, position: 'relative', zIndex: 1 }}>
-        <Reveal delay={0}>
-          <div
-            style={{
-              fontFamily: "'Fira Code', monospace",
-              fontSize: '13px',
-              color: 'var(--accent-2)',
-              letterSpacing: '0.05em',
-              marginBottom: '18px',
-            }}
-          >
-            // Initializing profile&hellip;
-          </div>
-        </Reveal>
-
         <Reveal delay={0.08}>
           <h1
             style={{
@@ -105,13 +91,35 @@ export function Hero() {
         <Reveal delay={0.24}>
           <div
             style={{
-              fontFamily: "'Fira Code', monospace",
-              fontSize: '13px',
-              color: 'var(--accent-2)',
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: '12px',
+              flexWrap: 'wrap',
               marginBottom: '36px',
             }}
           >
-            &gt; Stack: MongoDB · Express · React · TypeScript · Node.js · Python
+            <span
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '11px',
+                fontWeight: 600,
+                color: 'var(--fg-faint)',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Stack
+            </span>
+            <span
+              style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '15px',
+                color: 'var(--fg-muted)',
+                lineHeight: 1.6,
+              }}
+            >
+              MongoDB · Express · React · TypeScript · Node.js · Python
+            </span>
           </div>
         </Reveal>
 
@@ -149,8 +157,9 @@ export function Hero() {
               <span
                 key={tag}
                 style={{
-                  fontFamily: "'Fira Code', monospace",
-                  fontSize: '10px',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '11px',
+                  fontWeight: 600,
                   color: 'var(--fg-faint)',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -167,14 +176,16 @@ export function Hero() {
           <div style={{ marginTop: '40px' }}>
             <div
               style={{
-                fontFamily: "'Fira Code', monospace",
+                fontFamily: "'DM Sans', sans-serif",
                 fontSize: '11px',
-                color: 'var(--accent-2)',
-                letterSpacing: '0.05em',
+                fontWeight: 600,
+                color: 'var(--fg-faint)',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
                 marginBottom: '14px',
               }}
             >
-              &gt; Consistency, visualized · @moi-script
+              GitHub contributions · @moi-script
             </div>
             <div
               style={{
