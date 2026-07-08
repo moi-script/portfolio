@@ -49,6 +49,18 @@ export function makeParchmentTexture(size = 1024): CanvasTexture {
 
   const tex = new CanvasTexture(canvas)
   tex.colorSpace = SRGBColorSpace
-  tex.anisotropy = 8
+  tex.anisotropy = 4
   return tex
+}
+
+/**
+ * Shared, lazily-created parchment texture. All pages reuse this single
+ * texture instead of each allocating its own — one 512² texture instead of N,
+ * which drastically cuts GPU memory (a common cause of context-loss on
+ * integrated GPUs).
+ */
+let sharedParchment: CanvasTexture | null = null
+export function getParchmentTexture(): CanvasTexture {
+  if (!sharedParchment) sharedParchment = makeParchmentTexture(512)
+  return sharedParchment
 }

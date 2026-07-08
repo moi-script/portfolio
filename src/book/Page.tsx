@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef, type ReactNode } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
-import { Mesh, ShaderMaterial, Texture } from 'three'
+import { Mesh, ShaderMaterial } from 'three'
 import {
   PAGE_WIDTH,
   PAGE_HEIGHT,
   PAGE_SEGMENTS,
   makePageMaterial,
 } from './pageShader'
-import { makeParchmentTexture } from './parchment'
+import { getParchmentTexture } from './parchment'
 import type { SectionId } from './navMap'
 
 const HTML_SCALE = 0.0072 // world units per CSS px, tuned so content fills a page
@@ -27,12 +27,12 @@ export function Page({
   onNavigate?: (s: SectionId) => void
 }) {
   const meshRef = useRef<Mesh>(null)
-  const material = useMemo(() => makePageMaterial(makeParchmentTexture()), [])
+  // Materials are cheap and per-page (they hold the per-page uTurn uniform),
+  // but the texture map is a single shared instance — never dispose it here.
+  const material = useMemo(() => makePageMaterial(getParchmentTexture()), [])
 
   useEffect(() => {
     return () => {
-      const tex = material.uniforms.uMap.value as Texture | undefined
-      tex?.dispose?.()
       material.dispose()
     }
   }, [material])

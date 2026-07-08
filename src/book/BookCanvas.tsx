@@ -77,7 +77,27 @@ export function BookCanvas() {
       {/* tall spacer drives scrolling; canvas is fixed behind it */}
       <div style={{ height: `${(PAGE_COUNT + 1) * 100}vh` }} aria-hidden />
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
-        <Canvas camera={{ position: [1.2, 0, 8], fov: 40 }}>
+        <Canvas
+          camera={{ position: [1.2, 0, 8], fov: 40 }}
+          dpr={[1, 1.5]}
+          gl={{ antialias: true, powerPreference: 'high-performance' }}
+          onCreated={({ gl }) => {
+            const canvas = gl.domElement
+            // Let the browser RESTORE a lost context instead of leaving it dead
+            // (three shows a blank canvas otherwise). Log both for diagnosis.
+            canvas.addEventListener(
+              'webglcontextlost',
+              (e) => {
+                e.preventDefault()
+                console.warn('[book] WebGL context LOST — will attempt restore', e)
+              },
+              false,
+            )
+            canvas.addEventListener('webglcontextrestored', () => {
+              console.warn('[book] WebGL context RESTORED')
+            })
+          }}
+        >
           <Backdrop />
           <Book progress={progress} onNavigate={jumpTo} />
         </Canvas>
