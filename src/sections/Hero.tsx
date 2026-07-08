@@ -1,5 +1,12 @@
 import type { CSSProperties } from 'react'
+import { GitHubCalendar } from 'react-github-calendar'
 import { Reveal } from '../components/Reveal'
+import { useTheme } from '../theme/ThemeContext'
+
+const calendarTheme = {
+  light: ['#e9edf5', '#b9c9ef', '#7aa0f0', '#4f7cf0', '#2f6bff'],
+  dark: ['#0f1626', '#0a3a2e', '#0f7a54', '#12b374', '#00ff88'],
+}
 
 const CTA_BASE: CSSProperties = {
   padding: '13px 30px',
@@ -17,6 +24,7 @@ const CTA_BASE: CSSProperties = {
 const STAT_PILLS = ['3+ yrs Node.js', 'MERN Stack', 'AI / RAG / OCR', 'CompEng Student']
 
 export function Hero() {
+  const { theme } = useTheme()
   return (
     <section
       id="top"
@@ -151,6 +159,41 @@ export function Hero() {
                 {tag}
               </span>
             ))}
+          </div>
+        </Reveal>
+
+        {/* Contribution graph — proof of consistency, embedded in the hero */}
+        <Reveal delay={0.48}>
+          <div style={{ marginTop: '40px' }}>
+            <div
+              style={{
+                fontFamily: "'Fira Code', monospace",
+                fontSize: '11px',
+                color: 'var(--accent-2)',
+                letterSpacing: '0.05em',
+                marginBottom: '14px',
+              }}
+            >
+              &gt; Consistency, visualized · @moi-script
+            </div>
+            <div
+              style={{
+                overflowX: 'auto',
+                minHeight: 120,
+                color: 'var(--fg-muted)',
+                paddingBottom: '4px',
+              }}
+            >
+              <GitHubCalendar
+                username="moi-script"
+                colorScheme={theme}
+                theme={calendarTheme}
+                blockSize={10}
+                blockMargin={3}
+                fontSize={11}
+                showColorLegend={false}
+              />
+            </div>
           </div>
         </Reveal>
       </div>
