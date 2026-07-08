@@ -79,8 +79,6 @@ export function BookCanvas() {
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <Canvas
           camera={{ position: [1.2, 0, 8], fov: 40 }}
-          dpr={[1, 1.5]}
-          gl={{ antialias: true, powerPreference: 'high-performance' }}
           onCreated={({ gl }) => {
             const canvas = gl.domElement
             // Let the browser RESTORE a lost context instead of leaving it dead
