@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Backdrop } from './Backdrop'
-import { Page } from './Page'
-import { pageProgressToTurn } from './pageMath'
+import { Book } from './Book'
+import { SPREADS } from './navMap'
 
-const PAGE_COUNT = 1 // Phase 1: single page. Grows in Task 8.
+const PAGE_COUNT = SPREADS.length
 
 export function BookCanvas() {
   const [progress, setProgress] = useState(0)
@@ -29,7 +29,7 @@ export function BookCanvas() {
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
         <Canvas camera={{ position: [1.2, 0, 8], fov: 40 }}>
           <Backdrop />
-          <Page turn={pageProgressToTurn(progress, 0)} />
+          <Book progress={progress} />
         </Canvas>
       </div>
     </>
