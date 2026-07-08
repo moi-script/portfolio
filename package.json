@@ -35,14 +35,6 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",
-    "vitest": "^2.1.9"
-  },
-  "overrides": {
-    "vitest": {
-      "vite": "$vite"
-    },
-    "vite-node": {
-      "vite": "$vite"
-    }
+    "vitest": "^3.2.7"
   }
 }
