@@ -9,15 +9,16 @@ export function Work() {
         <Reveal>
           <p
             style={{
-              fontFamily: "'Fira Code', monospace",
+              fontFamily: "'DM Sans', sans-serif",
               fontSize: 11,
-              letterSpacing: '0.18em',
+              fontWeight: 600,
+              letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'var(--accent-2)',
-              margin: '0 0 8px',
+              color: 'var(--fg-faint)',
+              margin: '0 0 10px',
             }}
           >
-            // Selected work
+            Selected Work
           </p>
           <h2
             style={{

@@ -88,9 +88,9 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
           border: `1px solid ${isInDevelopment ? accent : 'var(--scrim-border)'}`,
           borderRadius: 6,
           padding: '4px 10px',
-          fontFamily: "'Fira Code', monospace",
+          fontFamily: "'DM Sans', sans-serif",
           fontSize: 10,
-          fontWeight: isInDevelopment ? 600 : 400,
+          fontWeight: 600,
           color: isInDevelopment ? accent : 'var(--on-image)',
           letterSpacing: '0.1em',
         }}
@@ -120,7 +120,8 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
               fontSize: 9,
               padding: '3px 8px',
               borderRadius: 4,
-              fontFamily: "'Fira Code', monospace",
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 500,
               letterSpacing: '0.05em',
             }}
           >
@@ -136,9 +137,10 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
       <p
         style={{
           margin: '0 0 6px',
-          fontFamily: "'Fira Code', monospace",
+          fontFamily: "'DM Sans', sans-serif",
+          fontWeight: 600,
           fontSize: 11,
-          letterSpacing: '0.15em',
+          letterSpacing: '0.12em',
           textTransform: 'uppercase',
           color: 'var(--fg-faint)',
         }}
@@ -162,11 +164,12 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
       <p
         style={{
           margin: '0 0 20px',
-          fontSize: 13,
-          color: accent,
-          fontFamily: "'Fira Code', monospace",
-          letterSpacing: '0.02em',
+          fontSize: 15,
+          color: 'var(--fg-muted)',
+          fontFamily: "'DM Sans', sans-serif",
+          letterSpacing: '0.01em',
           fontStyle: 'italic',
+          lineHeight: 1.6,
           borderLeft: `2px solid ${accent}66`,
           paddingLeft: 12,
         }}
@@ -189,14 +192,16 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
           cursor: 'pointer',
           marginBottom: 14,
           transition: 'all 0.3s',
-          color: expanded ? accent : 'var(--fg-faint)',
-          fontSize: 11,
-          fontFamily: "'Fira Code', monospace",
-          letterSpacing: '0.08em',
+          color: expanded ? accent : 'var(--fg-muted)',
+          fontSize: 12,
+          fontWeight: 600,
+          fontFamily: "'DM Sans', sans-serif",
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
         }}
       >
-        <span>// BUILDER JOURNEY</span>
-        <span style={{ transition: 'transform 0.3s', transform: expanded ? 'rotate(90deg)' : 'rotate(0)' }}>▶</span>
+        <span>Builder Journey</span>
+        <span style={{ transition: 'transform 0.3s', transform: expanded ? 'rotate(90deg)' : 'rotate(0)', fontSize: 10 }}>▶</span>
       </button>
 
       {/* Journey content */}
@@ -229,10 +234,11 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
                 <JourneyDot active={activeStep === i} color={accent} />
                 <span
                   style={{
-                    fontSize: 9,
-                    fontFamily: "'Fira Code', monospace",
+                    fontSize: 10,
+                    fontWeight: 600,
+                    fontFamily: "'DM Sans', sans-serif",
                     color: activeStep === i ? accent : 'var(--fg-faint)',
-                    letterSpacing: '0.06em',
+                    letterSpacing: '0.05em',
                     textTransform: 'uppercase',
                     whiteSpace: 'nowrap',
                   }}
@@ -274,11 +280,12 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
                     background: `${accent}15`,
                     border: `1px solid ${accent}44`,
                     color: accent,
-                    fontSize: 9,
+                    fontSize: 10,
+                    fontWeight: 500,
                     padding: '3px 9px',
                     borderRadius: 20,
-                    fontFamily: "'Fira Code', monospace",
-                    letterSpacing: '0.05em',
+                    fontFamily: "'DM Sans', sans-serif",
+                    letterSpacing: '0.03em',
                   }}
                 >
                   {item}
@@ -307,13 +314,14 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
               border: `1px solid ${accent}55`,
               borderRadius: 8,
               color: accent,
-              fontSize: 11,
-              fontFamily: "'Fira Code', monospace",
+              fontSize: 12,
+              fontWeight: 600,
+              fontFamily: "'DM Sans', sans-serif",
               textDecoration: 'none',
-              letterSpacing: '0.05em',
+              letterSpacing: '0.02em',
             }}
           >
-            ▲ Live Demo
+            Live Demo ↗
           </a>
         )}
         <a
@@ -331,13 +339,14 @@ export function ProjectScene({ project, index }: { project: Project; index: numb
             border: '1px solid var(--border)',
             borderRadius: 8,
             color: 'var(--fg-muted)',
-            fontSize: 11,
-            fontFamily: "'Fira Code', monospace",
+            fontSize: 12,
+            fontWeight: 600,
+            fontFamily: "'DM Sans', sans-serif",
             textDecoration: 'none',
-            letterSpacing: '0.05em',
+            letterSpacing: '0.02em',
           }}
         >
-          ⌥ GitHub
+          GitHub ↗
         </a>
       </div>
     </div>

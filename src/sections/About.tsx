@@ -39,15 +39,16 @@ export function About() {
           >
             <p
               style={{
-                margin: '0 0 8px',
-                fontFamily: "'Fira Code', monospace",
+                margin: '0 0 10px',
+                fontFamily: "'DM Sans', sans-serif",
                 fontSize: 11,
-                color: 'var(--accent-2)',
-                letterSpacing: '0.18em',
+                fontWeight: 600,
+                color: 'var(--fg-faint)',
+                letterSpacing: '0.14em',
                 textTransform: 'uppercase',
               }}
             >
-              // About the Developer
+              About
             </p>
             <h2
               style={{
@@ -112,12 +113,11 @@ export function About() {
                     <h4
                       style={{
                         margin: '0 0 8px',
-                        fontFamily: "'Fira Code', monospace",
-                        fontSize: 11,
-                        fontWeight: 600,
-                        color: active ? 'var(--accent-2)' : 'var(--fg-faint)',
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: active ? 'var(--accent-2)' : 'var(--fg)',
+                        letterSpacing: '0.02em',
                       }}
                     >
                       {mod.label}
@@ -140,41 +140,85 @@ export function About() {
 
             <div
               style={{
-                padding: '22px 26px',
-                background: 'var(--code-bg)',
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: 0,
                 border: '1px solid var(--border)',
                 borderRadius: 12,
-                fontFamily: "'Fira Code', monospace",
-                fontSize: 12,
-                lineHeight: 2,
-                color: 'var(--code-fg)',
+                overflow: 'hidden',
               }}
             >
-              <div>
-                <span style={{ opacity: 0.5 }}>$ </span>
-                <span>node analyze.js --mode deep</span>
-              </div>
-              <div>
-                <span style={{ opacity: 0.5 }}>→ </span>
-                <span style={{ opacity: 0.75 }}>Experience: </span>
-                <span>3+ years</span>
-                <span style={{ opacity: 0.75 }}> Node.js · React · Javascript</span>
-              </div>
-              <div>
-                <span style={{ opacity: 0.5 }}>→ </span>
-                <span style={{ opacity: 0.75 }}>Currently: </span>
-                <span>Computer Engineering</span>
-                <span style={{ opacity: 0.75 }}> Project · AI + OCR + IOT</span>
-              </div>
-              <div>
-                <span style={{ opacity: 0.5 }}>→ </span>
-                <span style={{ opacity: 0.75 }}>Mindset: </span>
-                <span>"Consistency is everything. Humility is the edge."</span>
-              </div>
-              <div>
-                <span style={{ opacity: 0.5 }}>→ </span>
-                <span style={{ opacity: 0.75 }}>Status: </span>
-                <span>◉ Open to internships &amp; freelance</span>
+              {[
+                { label: 'Experience', value: '3+ years — Node.js · React · JavaScript' },
+                { label: 'Currently', value: 'Computer Engineering project · AI + OCR + IoT' },
+                { label: 'Mindset', value: 'Consistency is everything. Humility is the edge.' },
+              ].map((row, i) => (
+                <div
+                  key={row.label}
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '4px 20px',
+                    padding: '16px 22px',
+                    borderTop: i === 0 ? 'none' : '1px solid var(--border)',
+                  }}
+                >
+                  <span
+                    style={{
+                      minWidth: 110,
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: 'var(--fg-faint)',
+                    }}
+                  >
+                    {row.label}
+                  </span>
+                  <span
+                    style={{
+                      flex: 1,
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 15,
+                      color: 'var(--fg-muted)',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {row.value}
+                  </span>
+                </div>
+              ))}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10,
+                  padding: '16px 22px',
+                  borderTop: '1px solid var(--border)',
+                  background: 'var(--bg)',
+                }}
+              >
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: '#22c55e',
+                    boxShadow: '0 0 8px #22c55e88',
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    color: 'var(--fg)',
+                  }}
+                >
+                  Open to internships &amp; freelance
+                </span>
               </div>
             </div>
           </div>
