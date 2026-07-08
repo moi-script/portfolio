@@ -12,7 +12,7 @@ export const acts: Act[] = [
     index: '01',
     title: 'The Foundation',
     kicker: 'Before College',
-    body: "C++ was my first language. Low-level, rigid, disciplined. It taught me how computers actually think — memory, pointers, logic. A tough but necessary foundation.",
+    body: "C++ was my first language. Low-level, rigid, disciplined. It taught me how computers actually think: memory, pointers, logic. A tough foundation, but a necessary one.",
   },
   {
     id: 'spark',
@@ -26,13 +26,13 @@ export const acts: Act[] = [
     index: '03',
     title: 'The Trial',
     kicker: '2nd Year',
-    body: "Engineering Portal for DSA class. Built a multi-role system with real-time chat and data visualization. Learned the hard lesson: always design the database schema first. Patience was tested. Character was built.",
+    body: "Engineering Portal for DSA class. Built a multi-role system with real-time chat and data visualization. Learned the hard way that you always design the database schema first. That project tested my patience more than any exam did.",
   },
   {
     id: 'ascent',
     index: '04',
     title: 'The Ascent',
     kicker: 'Now',
-    body: "Recepta — my first SaaS attempt. Azure OCR, RAG, AI text detection, full MERN stack. The project that made me realize the beauty of open source and software as a global collaboration.",
+    body: "Recepta, my first SaaS attempt. Azure OCR, RAG, AI text detection, full MERN stack. This project made me appreciate open source, and how much software is really just people building on each other's work.",
   },
 ]

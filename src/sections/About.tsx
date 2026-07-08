@@ -10,12 +10,12 @@ const modules = [
   {
     label: 'The Logic',
     icon: '⌘',
-    desc: '2+ years of breaking and fixing things. My foundation spans Node.js, Express, and everything between — built through real DSA-driven projects.',
+    desc: '2+ years of breaking and fixing things. My foundation is Node.js and Express, built through real DSA-driven projects rather than tutorials.',
   },
   {
     label: 'The Solver',
     icon: '◈',
-    desc: "I build to remove friction. Whether it's OCR reading receipts or an AI assistant, the goal is always: make the technology work for the person efficiently, not some showy stuff.",
+    desc: "I build to remove friction. Whether it's OCR reading receipts or an AI assistant, the goal is the same: make the technology work for the person using it, not just look impressive in a demo.",
   },
 ]
 
@@ -73,12 +73,12 @@ export function About() {
                 fontFamily: "'DM Sans', sans-serif",
               }}
             >
-              Computer Engineering student from National College of Science and Technology, who views software
-              through the lens of an engineer. With a foundation in Node.js and a passion for AI-driven automation, I
-              specialize in building{' '}
-              <em style={{ color: 'var(--accent-2)', fontStyle: 'normal' }}>smart systems</em> — from full-stack
-              budget trackers with OCR to real-time learning portals. I believe we're all part of a larger ecosystem,
-              helping each other solve problems.
+              Computer Engineering student at National College of Science and Technology, and I tend to approach
+              software the way an engineer approaches a system. With a foundation in Node.js and an interest in
+              AI-driven automation, I build{' '}
+              <em style={{ color: 'var(--accent-2)', fontStyle: 'normal' }}>smart systems</em>, from full-stack
+              budget trackers with OCR to real-time learning portals. Most of what I know, I learned from other
+              people's open-source work, so I try to build things worth sharing back.
             </p>
 
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 32 }}>
