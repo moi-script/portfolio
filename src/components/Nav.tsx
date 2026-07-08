@@ -20,7 +20,7 @@ export function Nav() {
           color: var(--fg-muted);
           text-decoration: none;
           font-size: 12px;
-          font-family: 'Fira Code', monospace;
+          font-family: 'DM Sans', sans-serif;
           letter-spacing: 0.06em;
           transition: color 0.2s;
         }
@@ -33,7 +33,7 @@ export function Nav() {
           border-radius: 6px;
           color: var(--accent-2);
           font-size: 11px;
-          font-family: 'Fira Code', monospace;
+          font-family: 'DM Sans', sans-serif;
           cursor: pointer;
           letter-spacing: 0.08em;
           transition: background 0.2s;
@@ -65,7 +65,7 @@ export function Nav() {
           color: var(--fg-muted);
           text-decoration: none;
           font-size: 13px;
-          font-family: 'Fira Code', monospace;
+          font-family: 'DM Sans', sans-serif;
           letter-spacing: 0.08em;
           padding: 13px 16px;
           border-radius: 8px;
@@ -85,7 +85,7 @@ export function Nav() {
           border-radius: 8px;
           color: var(--accent-2);
           font-size: 12px;
-          font-family: 'Fira Code', monospace;
+          font-family: 'DM Sans', sans-serif;
           cursor: pointer;
           letter-spacing: 0.08em;
           text-align: left;
@@ -117,13 +117,14 @@ export function Nav() {
         transition: 'all 0.3s',
       }}>
         {/* Logo */}
-        <span style={{
-          fontFamily: "'Fira Code', monospace",
-          fontSize: '14px',
-          color: 'var(--accent-2)',
-          letterSpacing: '0.1em',
-          fontWeight: 500,
-        }}>moi.dev<span style={{ animation: 'blink 1.2s infinite', marginLeft: '2px' }}>_</span></span>
+        <a href="#top" style={{
+          fontFamily: "'Syne', sans-serif",
+          fontSize: '18px',
+          color: 'var(--fg)',
+          letterSpacing: '-0.01em',
+          fontWeight: 800,
+          textDecoration: 'none',
+        }}>Moises Nugal</a>
 
         {/* Desktop links — hidden on mobile via class */}
         <div className="nav-links" style={{ display: 'flex', gap: '36px', alignItems: 'center' }}>
@@ -186,7 +187,6 @@ export function Nav() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="mobile-nav-link"
               >
-                <span style={{ color: 'color-mix(in srgb, var(--accent-2) 40%, transparent)', marginRight: '10px' }}>//</span>
                 {item}
               </a>
             ))}
@@ -204,7 +204,7 @@ export function Nav() {
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
             >
-              ◉ Hire Me
+              Hire Me
             </a>
 
             {/* Quick contact pills */}
@@ -216,8 +216,8 @@ export function Nav() {
             }}>
               {['github.com/moi-script', 'nugalmoises62@gmail.com'].map(txt => (
                 <span key={txt} style={{
-                  fontFamily: "'Fira Code', monospace",
-                  fontSize: '9px',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '11px',
                   color: 'var(--fg-faint)',
                   letterSpacing: '0.06em',
                 }}>{txt}</span>

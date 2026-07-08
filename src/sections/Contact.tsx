@@ -1,9 +1,9 @@
 import { Reveal } from '../components/Reveal'
 
 const links = [
-  { label: 'nugalmoises62@gmail.com', icon: '◎', href: 'mailto:nugalmoises62@gmail.com' },
-  { label: 'github.com/moi-script', icon: '⌥', href: 'https://github.com/moi-script' },
-  { label: 'linkedin.com/in/moi', icon: '⊞', href: 'https://www.linkedin.com/in/moises-nugal-1b06833b1' },
+  { label: 'nugalmoises62@gmail.com', href: 'mailto:nugalmoises62@gmail.com' },
+  { label: 'github.com/moi-script', href: 'https://github.com/moi-script' },
+  { label: 'linkedin.com/in/moises-nugal', href: 'https://www.linkedin.com/in/moises-nugal-1b06833b1' },
 ]
 
 export function Contact() {
@@ -13,15 +13,16 @@ export function Contact() {
         <Reveal>
           <p
             style={{
-              margin: '0 0 8px',
-              fontFamily: "'Fira Code', monospace",
+              margin: '0 0 10px',
+              fontFamily: "'DM Sans', sans-serif",
               fontSize: 11,
-              color: 'var(--accent-2)',
-              letterSpacing: '0.18em',
+              fontWeight: 600,
+              color: 'var(--fg-faint)',
+              letterSpacing: '0.14em',
               textTransform: 'uppercase',
             }}
           >
-            // Let's Build Together
+            Contact
           </p>
           <h2
             style={{
@@ -62,10 +63,10 @@ export function Contact() {
               border: '1px solid var(--accent-2)',
               borderRadius: 10,
               color: 'var(--bg-elev)',
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 600,
-              fontFamily: "'Fira Code', monospace",
-              letterSpacing: '0.04em',
+              fontFamily: "'DM Sans', sans-serif",
+              letterSpacing: '0.02em',
               textDecoration: 'none',
               cursor: 'pointer',
               transition: 'transform 0.2s, opacity 0.2s',
@@ -96,10 +97,11 @@ export function Contact() {
                   border: '1px solid var(--border)',
                   borderRadius: 10,
                   color: 'var(--fg-muted)',
-                  fontSize: 12,
-                  fontFamily: "'Fira Code', monospace",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  fontFamily: "'DM Sans', sans-serif",
                   textDecoration: 'none',
-                  letterSpacing: '0.04em',
+                  letterSpacing: '0.01em',
                   transition: 'all 0.25s',
                 }}
                 onMouseEnter={(e) => {
@@ -111,7 +113,6 @@ export function Contact() {
                   e.currentTarget.style.color = 'var(--fg-muted)'
                 }}
               >
-                <span style={{ fontSize: 14 }}>{link.icon}</span>
                 {link.label}
               </a>
             ))}

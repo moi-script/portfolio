@@ -13,18 +13,18 @@ export function Footer() {
     >
       <span
         style={{
-          fontFamily: "'Fira Code', monospace",
-          fontSize: 10,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 12,
           color: 'var(--fg-faint)',
           letterSpacing: '0.06em',
         }}
       >
-        Built by Moi · 2026 · Cavite, PH 🇵🇭
+        Built by Moises Nugal · 2026 · Cavite, PH 🇵🇭
       </span>
       <span
         style={{
-          fontFamily: "'Fira Code', monospace",
-          fontSize: 10,
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 12,
           color: 'var(--fg-faint)',
         }}
       >
