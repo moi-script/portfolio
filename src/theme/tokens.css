@@ -39,6 +39,20 @@
   --on-image-muted: #e2e8f0;
 }
 
+/* Book palette — warm, theme-independent (the book looks the same in a dark room
+   regardless of light/dark site theme). Used by parchment cards and read via
+   getComputedStyle by WebGL materials. */
+:root {
+  --parchment: #e9d6ad;
+  --parchment-edge: #cdb488;
+  --ink: #3a2c17;
+  --ink-muted: #6b5636;
+  --gold: #f2c14e;
+  --gold-deep: #b8860b;
+  --wood: #6b4a2b;
+  --room-bg: #0a0705;
+}
+
 * { box-sizing: border-box; }
 html { color-scheme: light dark; scroll-behavior: smooth; }
 body { margin: 0; background: var(--bg); color: var(--fg); transition: background 0.4s, color 0.4s; }
