@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Backdrop } from './Backdrop'
 import { Book } from './Book'
-import { SPREADS } from './navMap'
+import { NavOverlay } from './NavOverlay'
+import { SPREADS, pageForSection, type SectionId } from './navMap'
 
 const PAGE_COUNT = SPREADS.length
 
@@ -22,8 +23,15 @@ export function BookCanvas() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const jumpTo = (section: SectionId) => {
+    const max = document.documentElement.scrollHeight - window.innerHeight
+    const target = (pageForSection(section) / PAGE_COUNT) * max
+    window.scrollTo({ top: target, behavior: 'smooth' })
+  }
+
   return (
     <>
+      <NavOverlay onJump={jumpTo} />
       {/* tall spacer drives scrolling; canvas is fixed behind it */}
       <div style={{ height: `${(PAGE_COUNT + 1) * 100}vh` }} aria-hidden />
       <div style={{ position: 'fixed', inset: 0, zIndex: 0 }}>
