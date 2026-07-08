@@ -1,21 +1,9 @@
-import { Nav } from './components/Nav'
-import { Hero } from './sections/Hero'
-import { Story } from './sections/Story'
-import { Work } from './sections/Work'
-import { About } from './sections/About'
-import { Contact } from './sections/Contact'
-import { Footer } from './sections/Footer'
+import { BookCanvas } from './book/BookCanvas'
 
 export default function App() {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--fg)', fontFamily: "'DM Sans', sans-serif", overflowX: 'hidden' }}>
-      <Nav />
-      <Hero />
-      <Story />
-      <Work />
-      <About />
-      <Contact />
-      <Footer />
+    <div style={{ minHeight: '100vh', background: 'var(--room-bg)', overflowX: 'hidden' }}>
+      <BookCanvas />
     </div>
   )
 }
