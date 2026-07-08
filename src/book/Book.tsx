@@ -12,7 +12,7 @@ export function Book({ progress }: { progress: number }) {
 
   return (
     <group>
-      <BookChrome />
+      <BookChrome progress={progress} />
       {SPREADS.map((_, i) => {
         const turn = pageProgressToTurn(progress, i)
         const z = (turn > 0.5 ? i : SPREADS.length - i) * Z_STEP
