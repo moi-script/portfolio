@@ -2,55 +2,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Fira+Code:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root, :root[data-theme="light"] {
-  --bg: #f4f6fb;
-  --bg-elev: #ffffff;
-  --fg: #0b1220;
-  --fg-muted: #47536b;
-  --fg-faint: #8b97ac;
-  --border: rgba(11, 18, 32, 0.10);
-  --accent: #0b1220;        /* deep ink */
-  --accent-2: #2f6bff;      /* electric blue */
-  --code-bg: #0f1626;
-  --code-fg: #cbd5e1;
-  --shadow: 0 20px 60px rgba(11, 18, 32, 0.08);
+  --bg: #f5ede1;
+  --bg-elev: #fffaf3;
+  --fg: #2b1d12;
+  --fg-muted: #6b5844;
+  --fg-faint: #a3927c;
+  --border: rgba(43, 29, 18, 0.10);
+  --accent: #a5673a;
+  --accent-2: #c8874f;
+  --code-bg: #241812;
+  --code-fg: #e8d8c4;
+  --shadow: 0 20px 60px rgba(43, 29, 18, 0.08);
 }
 
 :root[data-theme="dark"] {
-  --bg: #04070e;
-  --bg-elev: rgba(8, 12, 22, 0.8);
-  --fg: #f1f5f9;
-  --fg-muted: #94a3b8;
-  --fg-faint: #475569;
-  --border: rgba(255, 255, 255, 0.07);
-  --accent: #00ff88;        /* neon green — dark only */
-  --accent-2: #00d4ff;
+  --bg: #0f0a06;
+  --bg-elev: #1a120b;
+  --fg: #f0e6d8;
+  --fg-muted: #b7a790;
+  --fg-faint: #7a6b57;
+  --border: rgba(240, 230, 216, 0.08);
+  --accent: #c8874f;
+  --accent-2: #e0a668;
   --code-bg: rgba(0, 0, 0, 0.4);
-  --code-fg: #7dd3fc;
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --code-fg: #e0a668;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-/* On-image tokens — theme-independent. Used for caption badges that sit
-   on top of a project photo (dark scrim + light text), so they must stay
-   readable in BOTH light and dark themes. Deliberately not overridden per theme. */
+/* On-image tokens — theme-independent (project cards overlay photos). */
 :root {
-  --scrim: rgba(4, 7, 14, 0.75);
-  --scrim-border: rgba(255, 255, 255, 0.18);
-  --on-image: #f1f5f9;
-  --on-image-muted: #e2e8f0;
-}
-
-/* Book palette — warm, theme-independent (the book looks the same in a dark room
-   regardless of light/dark site theme). Used by parchment cards and read via
-   getComputedStyle by WebGL materials. */
-:root {
-  --parchment: #e9d6ad;
-  --parchment-edge: #cdb488;
-  --ink: #3a2c17;
-  --ink-muted: #6b5636;
-  --gold: #f2c14e;
-  --gold-deep: #b8860b;
-  --wood: #6b4a2b;
-  --room-bg: #0a0705;
+  --scrim: rgba(15, 10, 6, 0.75);
+  --scrim-border: rgba(240, 230, 216, 0.18);
+  --on-image: #f0e6d8;
+  --on-image-muted: #e2d6c4;
 }
 
 * { box-sizing: border-box; }
