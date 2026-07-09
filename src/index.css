@@ -75,6 +75,8 @@ body, html {
   color: var(--fg);
   pointer-events: none; /* only the button is interactive */
 }
+/* Light-coffee spider in light mode (a soft, slightly light latte tone). */
+:root[data-theme="light"] .spider-switch { color: #c9a980; }
 .spider-pendulum {
   position: relative;
   display: flex;
