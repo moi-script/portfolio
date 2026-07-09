@@ -1,11 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-// import App from './App.tsx'
-// import MoiPortfolio from './App.tsx'
-import MoiPortfolio from './Moi.tsx'
+import './theme/tokens.css'
+import { ThemeProvider } from './theme/ThemeContext'
+import App from './App.tsx'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <MoiPortfolio />
-  </StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </StrictMode>,
 )

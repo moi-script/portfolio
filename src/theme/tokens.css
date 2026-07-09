@@ -1,0 +1,48 @@
+/* Fonts + design tokens. Light is the base; dark overrides. */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Fira+Code:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root, :root[data-theme="light"] {
+  --bg: #f5ede1;
+  --bg-elev: #fffaf3;
+  --fg: #2b1d12;
+  --fg-muted: #6b5844;
+  --fg-faint: #a3927c;
+  --border: rgba(43, 29, 18, 0.10);
+  --accent: #a5673a;
+  --accent-2: #c8874f;
+  --code-bg: #241812;
+  --code-fg: #e8d8c4;
+  --shadow: 0 20px 60px rgba(43, 29, 18, 0.08);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f0a06;
+  --bg-elev: #1a120b;
+  --fg: #f0e6d8;
+  --fg-muted: #b7a790;
+  --fg-faint: #7a6b57;
+  --border: rgba(240, 230, 216, 0.08);
+  --accent: #c8874f;
+  --accent-2: #e0a668;
+  --code-bg: rgba(0, 0, 0, 0.4);
+  --code-fg: #e0a668;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* On-image tokens — theme-independent (project cards overlay photos). */
+:root {
+  --scrim: rgba(15, 10, 6, 0.75);
+  --scrim-border: rgba(240, 230, 216, 0.18);
+  --on-image: #f0e6d8;
+  --on-image-muted: #e2d6c4;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light dark; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--fg); transition: background 0.4s, color 0.4s; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}

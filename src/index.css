@@ -1,6 +1,47 @@
-body, html { 
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        background-color: #060a12; /* Matches your app background to prevent white flashes */
-    }
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #0f0a06; /* espresso; prevents white flash before tokens load */
+}
+
+.nav-hamburger { display: none; }
+.nav-mobile-menu { display: none; }
+
+@media (max-width: 720px) {
+  .nav-links { display: none !important; }
+  .nav-hamburger { display: flex; }
+  .nav-mobile-menu.open { display: flex; }
+}
+
+/* Hero portrait duotone fade. Desktop: left edge blends into the text card,
+   plus a soft bottom fade and warm radial. */
+.hero-photo-fade {
+  background:
+    linear-gradient(90deg, var(--bg-elev) 0%, transparent 22%),
+    linear-gradient(0deg, var(--bg-elev) 2%, transparent 30%),
+    radial-gradient(circle at 60% 40%, rgba(200, 135, 79, 0.22), transparent 60%);
+}
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  /* Photo stacks on top full-width: give it room so the portrait isn't over-cropped. */
+  .hero-photo { min-height: 420px !important; order: -1; }
+  .hero-photo-img { object-position: center 22% !important; }
+  /* Drop the left-edge fade (only makes sense side-by-side); fade the bottom into the text instead. */
+  .hero-photo-fade {
+    background:
+      linear-gradient(0deg, var(--bg-elev) 0%, transparent 45%),
+      radial-gradient(circle at 50% 32%, rgba(200, 135, 79, 0.20), transparent 68%) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Very narrow (e.g. ~500px): keep the face comfortably framed. */
+  .hero-photo { min-height: 380px !important; }
+  .hero-photo-img { object-position: center 20% !important; }
+}
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr !important; }
+}
