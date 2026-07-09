@@ -68,17 +68,13 @@ export function Hero() {
           </Reveal>
         </div>
         <div style={{ position: 'relative', alignSelf: 'stretch', minHeight: 420 }} className="hero-photo">
-          <img src={portrait} alt="John Moises" style={{
+          <img className="hero-photo-img" src={portrait} alt="John Moises" style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'top center',
+            objectFit: 'cover', objectPosition: 'center 25%',
             filter: 'grayscale(0.4) sepia(0.55) saturate(1.35) hue-rotate(-12deg) contrast(1.02)',
           }} />
-          {/* coffee duotone + fade into the card */}
-          <div aria-hidden style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(90deg, var(--bg-elev) 0%, transparent 22%), linear-gradient(0deg, var(--bg-elev) 2%, transparent 30%), radial-gradient(circle at 60% 40%, rgba(200,135,79,0.22), transparent 60%)',
-            mixBlendMode: 'normal',
-          }} />
+          {/* coffee duotone + fade into the card (gradient switches to bottom-only on mobile, see index.css) */}
+          <div aria-hidden className="hero-photo-fade" style={{ position: 'absolute', inset: 0 }} />
         </div>
       </div>
     </section>
