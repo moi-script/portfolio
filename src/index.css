@@ -8,3 +8,8 @@ body, html {
 @media (max-width: 720px) {
   .nav-links { display: none !important; }
 }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-photo { min-height: 300px !important; order: -1; }
+}
