@@ -13,3 +13,7 @@ body, html {
   .hero-grid { grid-template-columns: 1fr !important; }
   .hero-photo { min-height: 300px !important; order: -1; }
 }
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr !important; }
+}
