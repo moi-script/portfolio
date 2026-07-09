@@ -46,6 +46,17 @@ body, html {
   .about-grid { grid-template-columns: 1fr !important; }
 }
 
+/* Spider mount inside the hero card */
+.hero-spider-mount {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  z-index: 5;
+}
+@media (max-width: 860px) {
+  .hero-spider-mount { right: 20px; } /* stays in reach on the stacked card */
+}
+
 /* Spider pull-switch */
 .spider-switch {
   width: 60px;
