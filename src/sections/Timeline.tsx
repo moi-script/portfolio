@@ -38,7 +38,7 @@ export function Timeline() {
                 aria-hidden
                 initial={reduce ? false : { scale: 0.3, opacity: 0.5 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true, margin: '-45% 0px -45% 0px' }}
+                viewport={{ once: false, margin: '-45% 0px -45% 0px' }}
                 transition={{ type: 'spring', stiffness: 320, damping: 18 }}
                 style={{
                   position: 'absolute', left: -32, top: 4, width: 16, height: 16,
