@@ -1,11 +1,12 @@
 import { skillGroups } from '../data/skills'
 import { skillIcons } from '../data/skillIcons'
+import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
 export function Skills() {
   return (
-    <section id="skills" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
+    <Section id="skills" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
       <SectionHeading kicker="How I build" title="Skills & Tools" />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
         {skillGroups.map((group, i) => (
@@ -38,6 +39,6 @@ export function Skills() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }

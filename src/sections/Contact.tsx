@@ -1,3 +1,4 @@
+import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
@@ -14,7 +15,7 @@ const LINKS = [
 
 export function Contact() {
   return (
-    <section id="contact" style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
+    <Section id="contact" style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
       <SectionHeading kicker="Why hire me" title="Let's Build Something" />
       <Reveal>
         <p style={{ marginTop: 0, maxWidth: 560, fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.7, color: 'var(--fg-muted)' }}>
@@ -42,6 +43,6 @@ export function Contact() {
           fontSize: 15, fontWeight: 600, textDecoration: 'none',
         }}>Download Resume</a>
       </Reveal>
-    </section>
+    </Section>
   )
 }

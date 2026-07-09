@@ -1,3 +1,4 @@
+import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
@@ -9,7 +10,7 @@ const STATS = [
 
 export function About() {
   return (
-    <section id="about" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
+    <Section id="about" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
       <SectionHeading kicker="Who I am" title="About Me" />
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.4fr) minmax(0,1fr)', gap: 40 }} className="about-grid">
         <Reveal>
@@ -40,6 +41,6 @@ export function About() {
           </div>
         </Reveal>
       </div>
-    </section>
+    </Section>
   )
 }

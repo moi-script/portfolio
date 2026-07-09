@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GitHubCalendar } from 'react-github-calendar'
 import { useTheme } from '../theme/ThemeContext'
+import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
@@ -36,7 +37,7 @@ export function GitHub() {
   }, [])
 
   return (
-    <section id="github" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
+    <Section id="github" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 24px' }}>
       <SectionHeading kicker="Consistency" title="GitHub Activity" />
       <Reveal>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, flexWrap: 'wrap', marginBottom: 24 }}>
@@ -71,6 +72,6 @@ export function GitHub() {
           />
         </div>
       </Reveal>
-    </section>
+    </Section>
   )
 }

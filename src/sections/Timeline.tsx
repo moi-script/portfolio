@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useReducedMotion } from 'framer-motion'
 import { acts } from '../data/story'
+import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
@@ -15,7 +16,7 @@ export function Timeline() {
   })
 
   return (
-    <section id="journey" style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
+    <Section id="journey" style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
       <SectionHeading kicker="How I got here" title="My Journey" />
       <div ref={trackRef} style={{ position: 'relative', paddingLeft: 32 }}>
         {/* faint base track */}
@@ -56,6 +57,6 @@ export function Timeline() {
           </Reveal>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }
