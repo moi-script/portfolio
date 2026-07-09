@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { Reveal } from '../components/Reveal'
 import { SpiderSwitch } from '../components/SpiderSwitch'
+import { ViewCount } from '../components/ViewCount'
 import { PersonaScene } from './PersonaScene'
 import { useTheme } from '../theme/ThemeContext'
 
@@ -72,6 +73,7 @@ export function Hero() {
               <a href={GITHUB} target="_blank" rel="noreferrer" style={{ color: 'var(--fg-muted)', textDecoration: 'none' }}>GitHub</a>
               <a href={LINKEDIN} target="_blank" rel="noreferrer" style={{ color: 'var(--fg-muted)', textDecoration: 'none' }}>LinkedIn</a>
               <a href={`mailto:${EMAIL}`} style={{ color: 'var(--fg-muted)', textDecoration: 'none' }}>Email</a>
+              <ViewCount />
             </div>
           </Reveal>
         </div>
