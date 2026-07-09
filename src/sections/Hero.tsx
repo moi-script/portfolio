@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react'
 import { Reveal } from '../components/Reveal'
 import portrait from '../assets/profile_pic_1.png'
 
-const RESUME = '/resume.pdf' // TODO: drop resume.pdf into public/
+const RESUME = '/Moises_Nugal_CV_Polished.docx' // current CV
 const GITHUB = 'https://github.com/moi-script'
 const LINKEDIN = 'https://www.linkedin.com/in/your-handle' // TODO: replace
 const EMAIL = 'nugalmoises62@gmail.com'
