@@ -71,6 +71,7 @@ export function SpiderSwitch({ onToggle, isNight }: { onToggle: () => void; isNi
           dragElastic={0.35}
           whileHover={reduce ? undefined : { scale: 1.06 }}
           onPointerDown={() => { moved.current = false }}
+          onDragStart={() => { moved.current = true }}
           onDrag={(_e, info) => { if (Math.abs(info.offset.y) > 4) moved.current = true }}
           onDragEnd={(_e, info) => {
             const dist = Math.max(0, info.offset.y)
