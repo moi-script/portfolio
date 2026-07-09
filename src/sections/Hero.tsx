@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { Reveal } from '../components/Reveal'
-import portrait from '../assets/profile_pic_1.png'
+import portrait from '../assets/profile_pic_portfolio.png'
 
 const RESUME = '/Moises_Nugal_CV_Polished.docx' // current CV
 const GITHUB = 'https://github.com/moi-script'
