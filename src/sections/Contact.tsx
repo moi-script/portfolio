@@ -18,8 +18,8 @@ export function Contact() {
       <SectionHeading kicker="Why hire me" title="Let's Build Something" />
       <Reveal>
         <p style={{ marginTop: 0, maxWidth: 560, fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.7, color: 'var(--fg-muted)' }}>
-          I'm open to internships, freelance work, and collaboration. If you're building
-          something ambitious, I'd love to hear about it.
+          I'm looking for internships, and I'm happy to talk freelance too. If you're
+          building something and think I can help, send me an email.
         </p>
       </Reveal>
       <Reveal delay={0.1}>

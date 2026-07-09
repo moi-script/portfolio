@@ -47,9 +47,9 @@ export function Hero() {
               margin: '20px 0 0', maxWidth: 460, fontFamily: "'DM Sans', sans-serif",
               fontSize: 16, lineHeight: 1.7, color: 'var(--fg-muted)',
             }}>
-              I'm a Computer Engineering student who builds modern full-stack web
-              applications with React, Node.js, and MongoDB, and integrates AI into
-              real-world products.
+              Computer Engineering student. I build full-stack apps and wire AI into
+              them, like receipt scanning that reads prices off a photo and agents that
+              analyze markets.
             </p>
           </Reveal>
           <Reveal delay={0.24}>

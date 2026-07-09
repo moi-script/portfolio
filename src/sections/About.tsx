@@ -15,14 +15,14 @@ export function About() {
         <Reveal>
           <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, lineHeight: 1.8, color: 'var(--fg-muted)' }}>
             <p style={{ marginTop: 0 }}>
-              I'm a Computer Engineering student passionate about building scalable web
-              applications and integrating AI into real-world solutions. I work across the
-              full stack, from database schema design to polished front-end interfaces.
+              I'm a Computer Engineering student who builds web apps end to end. I used to
+              start with the frontend and suffer for it, rewriting everything once the data
+              didn't fit. Now I design the database first and the rest goes a lot smoother.
             </p>
             <p style={{ marginBottom: 0 }}>
-              Right now I'm deepening my work in AI-driven products (RAG, OCR, agents) and
-              starting to explore embedded systems and AI + IoT, combining the software and
-              hardware sides of my engineering background.
+              Most of my time right now goes into AI features: receipt OCR, RAG, a
+              paper-trading agent. Next I want to get into embedded systems and IoT, so the
+              hardware half of my degree finally gets some use.
             </p>
           </div>
         </Reveal>
