@@ -107,20 +107,6 @@ body, html {
   background: radial-gradient(120% 90% at 70% 15%, rgba(120,170,220,0.20), transparent 55%),
               linear-gradient(180deg, rgba(255,250,243,0.10), transparent 40%);
 }
-.prop { position: absolute; border-radius: 6px; }
-.day-laptop {
-  right: 10%; bottom: 14%; width: 92px; height: 58px;
-  background: linear-gradient(160deg, rgba(200,210,225,0.55), rgba(150,165,190,0.35));
-  box-shadow: 0 10px 24px rgba(60,70,90,0.18);
-}
-.day-mug {
-  right: 30%; bottom: 15%; width: 22px; height: 24px; border-radius: 4px 4px 8px 8px;
-  background: rgba(200,135,79,0.5);
-}
-.day-plant {
-  left: 12%; bottom: 12%; width: 26px; height: 40px; border-radius: 40% 40% 6px 6px;
-  background: linear-gradient(180deg, rgba(90,150,110,0.6), rgba(60,110,80,0.4));
-}
 .mote { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(150,190,230,0.7); }
 
 /* Night — warm coffee-toned workspace (no neon) */
@@ -130,27 +116,9 @@ body, html {
               radial-gradient(100% 80% at 30% 80%, rgba(120,80,40,0.12), transparent 55%),
               linear-gradient(180deg, rgba(10,7,4,0.35), rgba(10,7,4,0.6));
 }
-.night-extra { position: absolute; inset: 0; }
-.monitor {
-  position: absolute; bottom: 20%; height: 46px; border-radius: 4px;
-  background: rgba(26,18,11,0.85); border: 1px solid rgba(200,135,79,0.45);
-  box-shadow: 0 0 14px rgba(200,135,79,0.22);
-}
-.m-left { left: 8%; width: 60px; transform: perspective(300px) rotateY(18deg); }
-.m-center { left: 38%; width: 70px; height: 52px; box-shadow: 0 0 16px rgba(224,166,104,0.30); }
-.m-right { right: 8%; width: 60px; transform: perspective(300px) rotateY(-18deg); }
-.rgb-underglow {
-  position: absolute; left: 6%; right: 6%; bottom: 16%; height: 8px; border-radius: 999px; filter: blur(6px);
-  background: linear-gradient(90deg, rgba(200,135,79,0.45), rgba(224,166,104,0.6), rgba(200,135,79,0.45));
-}
 .scanlines {
   position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
   background: repeating-linear-gradient(0deg, rgba(240,230,216,0.35) 0 1px, transparent 1px 3px);
 }
 .spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: rgba(224,166,104,0.85); }
 
-@media (max-width: 860px) {
-  /* .persona-scene also carries the .hero-photo class, so its existing !important
-     min-height/order/object-position rules still apply; only simplify the night clutter here. */
-  .night-extra { display: none; }
-}

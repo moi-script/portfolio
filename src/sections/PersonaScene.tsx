@@ -9,9 +9,6 @@ function DayScene() {
   return (
     <div className="scene day-scene" aria-hidden>
       <div className="day-wash" />
-      <div className="prop day-laptop" />
-      <div className="prop day-mug" />
-      <div className="prop day-plant" />
       {[0, 1, 2, 3, 4].map((i) => (
         <motion.span
           key={i}
@@ -29,12 +26,6 @@ function NightScene() {
   return (
     <div className="scene night-scene" aria-hidden>
       <div className="night-wash" />
-      <div className="night-extra">
-        <div className="monitor m-left" />
-        <div className="monitor m-center" />
-        <div className="monitor m-right" />
-        <div className="rgb-underglow" />
-      </div>
       <div className="scanlines" />
       {[0, 1, 2, 3, 4, 5].map((i) => (
         <motion.span
