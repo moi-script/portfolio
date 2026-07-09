@@ -14,6 +14,16 @@ body, html {
   .nav-mobile-menu.open { display: flex; }
 }
 
+/* Hero portrait: fill the scene column and keep the face framed. */
+.hero-photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
 /* Hero portrait duotone fade. Desktop: left edge blends into the text card,
    plus a soft bottom fade and warm radial. */
 .hero-photo-fade {
