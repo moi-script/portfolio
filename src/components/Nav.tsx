@@ -60,7 +60,7 @@ export function Nav() {
               width: 40, height: 40, borderRadius: 10, cursor: 'pointer',
               background: 'transparent', border: '1px solid var(--border)',
               color: 'var(--fg)', fontSize: 16, lineHeight: 1,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              alignItems: 'center', justifyContent: 'center',
               transition: 'all 0.2s',
             }}
           >
@@ -68,33 +68,31 @@ export function Nav() {
           </button>
           <ThemeToggle />
         </div>
-        {open && (
-          <ul
-            id={MENU_ID}
-            className="nav-mobile-menu"
-            style={{
-              position: 'absolute', top: '100%', left: 0, right: 0,
-              display: 'flex', flexDirection: 'column', gap: 2,
-              listStyle: 'none', margin: 0, padding: '8px 24px 16px',
-              background: 'var(--bg-elev)', borderBottom: '1px solid var(--border)',
-            }}
-          >
-            {LINKS.map((l) => (
-              <li key={l.id}>
-                <a
-                  href={`#${l.id}`}
-                  onClick={() => setOpen(false)}
-                  style={{
-                    display: 'block', padding: '10px 12px', borderRadius: 8,
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 16, textDecoration: 'none',
-                    color: active === l.id ? 'var(--accent)' : 'var(--fg-muted)',
-                    fontWeight: active === l.id ? 600 : 400, transition: 'color 0.2s',
-                  }}
-                >{l.label}</a>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul
+          id={MENU_ID}
+          className={`nav-mobile-menu${open ? ' open' : ''}`}
+          style={{
+            position: 'absolute', top: '100%', left: 0, right: 0,
+            flexDirection: 'column', gap: 2,
+            listStyle: 'none', margin: 0, padding: '8px 24px 16px',
+            background: 'var(--bg-elev)', borderBottom: '1px solid var(--border)',
+          }}
+        >
+          {LINKS.map((l) => (
+            <li key={l.id}>
+              <a
+                href={`#${l.id}`}
+                onClick={() => setOpen(false)}
+                style={{
+                  display: 'block', padding: '10px 12px', borderRadius: 8,
+                  fontFamily: "'DM Sans', sans-serif", fontSize: 16, textDecoration: 'none',
+                  color: active === l.id ? 'var(--accent)' : 'var(--fg-muted)',
+                  fontWeight: active === l.id ? 600 : 400, transition: 'color 0.2s',
+                }}
+              >{l.label}</a>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   )
