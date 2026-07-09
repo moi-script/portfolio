@@ -14,6 +14,16 @@ body, html {
   .nav-mobile-menu.open { display: flex; }
 }
 
+/* Hero portrait: fill the scene column and keep the face framed. */
+.hero-photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+}
+
 /* Hero portrait duotone fade. Desktop: left edge blends into the text card,
    plus a soft bottom fade and warm radial. */
 .hero-photo-fade {
@@ -45,3 +55,80 @@ body, html {
 @media (max-width: 720px) {
   .about-grid { grid-template-columns: 1fr !important; }
 }
+
+/* Spider mount inside the hero card */
+.hero-spider-mount {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  z-index: 5;
+}
+@media (max-width: 860px) {
+  .hero-spider-mount { right: 20px; } /* stays in reach on the stacked card */
+}
+
+/* Spider pull-switch */
+.spider-switch {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  color: var(--fg);
+  pointer-events: none; /* only the button is interactive */
+}
+.spider-pendulum {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.spider-web {
+  width: 2px;
+  height: 64px; /* REST_LEN */
+  background: linear-gradient(var(--fg-faint), var(--fg-muted));
+  opacity: 0.5;
+}
+.spider-body {
+  margin-top: -6px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: grab;
+  color: inherit;
+  pointer-events: auto;
+  touch-action: none; /* let framer own vertical drag */
+  border-radius: 12px;
+  display: flex;
+}
+.spider-body:active { cursor: grabbing; }
+.spider-body:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.spider-glyph { display: flex; line-height: 0; }
+
+/* Persona scene (hero right side) */
+.persona-scene { position: relative; align-self: stretch; min-height: 420px; overflow: hidden; }
+.scene-layer { position: absolute; inset: 0; pointer-events: none; }
+.scene { position: absolute; inset: 0; }
+
+/* Day */
+.day-wash {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 70% 15%, rgba(120,170,220,0.20), transparent 55%),
+              linear-gradient(180deg, rgba(255,250,243,0.10), transparent 40%);
+}
+.mote { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(150,190,230,0.7); }
+
+/* Night — warm coffee-toned workspace (no neon) */
+.night-wash {
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 65% 20%, rgba(200,135,79,0.13), transparent 55%),
+              radial-gradient(100% 80% at 30% 80%, rgba(120,80,40,0.12), transparent 55%),
+              linear-gradient(180deg, rgba(10,7,4,0.35), rgba(10,7,4,0.6));
+}
+.scanlines {
+  position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(240,230,216,0.35) 0 1px, transparent 1px 3px);
+}
+.spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: rgba(224,166,104,0.85); }
+

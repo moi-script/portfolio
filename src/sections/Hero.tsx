@@ -1,6 +1,8 @@
 import type { CSSProperties } from 'react'
 import { Reveal } from '../components/Reveal'
-import portrait from '../assets/profile_pic_portfolio.png'
+import { SpiderSwitch } from '../components/SpiderSwitch'
+import { PersonaScene } from './PersonaScene'
+import { useTheme } from '../theme/ThemeContext'
 
 const RESUME = '/Moises_Nugal_CV_Polished.docx' // current CV
 const GITHUB = 'https://github.com/moi-script'
@@ -14,6 +16,8 @@ const btnBase: CSSProperties = {
 }
 
 export function Hero() {
+  const { theme, toggle } = useTheme()
+  const isNight = theme === 'dark'
   return (
     <section id="home" style={{ padding: '48px 24px 24px' }}>
       <div style={{
@@ -21,13 +25,17 @@ export function Hero() {
         border: '1px solid var(--border)', borderRadius: 28, overflow: 'hidden',
         boxShadow: 'var(--shadow)', position: 'relative',
         display: 'grid', gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 0.9fr)',
-        alignItems: 'center', gap: 24,
+        alignItems: 'center', gap: 24, transition: 'background 0.6s ease',
       }} className="hero-grid">
+        {/* spider pull-switch in the top-right corner */}
+        <div className="hero-spider-mount">
+          <SpiderSwitch onToggle={toggle} isNight={isNight} />
+        </div>
         {/* accent glow */}
         <div aria-hidden style={{
           position: 'absolute', right: '8%', top: '20%', width: 340, height: 340,
           background: 'radial-gradient(circle, var(--accent) 0%, transparent 70%)',
-          opacity: 0.28, filter: 'blur(30px)', pointerEvents: 'none',
+          opacity: 0.28, filter: 'blur(30px)', pointerEvents: 'none', transition: 'opacity 0.6s ease',
         }} />
         <div style={{ padding: '56px clamp(24px, 5vw, 64px)', position: 'relative', zIndex: 1 }}>
           <Reveal>
@@ -67,15 +75,7 @@ export function Hero() {
             </div>
           </Reveal>
         </div>
-        <div style={{ position: 'relative', alignSelf: 'stretch', minHeight: 420 }} className="hero-photo">
-          <img className="hero-photo-img" src={portrait} alt="John Moises" style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center 25%',
-            filter: 'grayscale(0.4) sepia(0.55) saturate(1.35) hue-rotate(-12deg) contrast(1.02)',
-          }} />
-          {/* coffee duotone + fade into the card (gradient switches to bottom-only on mobile, see index.css) */}
-          <div aria-hidden className="hero-photo-fade" style={{ position: 'absolute', inset: 0 }} />
-        </div>
+        <PersonaScene />
       </div>
     </section>
   )

@@ -3,7 +3,7 @@
 
 :root, :root[data-theme="light"] {
   --bg: #f5ede1;
-  --bg-elev: #fffaf3;
+  --bg-elev: #f7efe0; /* soft light latte, not pure white, still raised above --bg */
   --fg: #2b1d12;
   --fg-muted: #6b5844;
   --fg-faint: #a3927c;
