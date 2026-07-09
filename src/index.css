@@ -123,35 +123,31 @@ body, html {
 }
 .mote { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(150,190,230,0.7); }
 
-/* Night */
+/* Night — warm coffee-toned workspace (no neon) */
 .night-wash {
   position: absolute; inset: 0;
-  background: radial-gradient(120% 90% at 65% 20%, rgba(0,200,255,0.14), transparent 55%),
-              radial-gradient(100% 80% at 30% 80%, rgba(255,60,180,0.12), transparent 55%),
+  background: radial-gradient(120% 90% at 65% 20%, rgba(200,135,79,0.13), transparent 55%),
+              radial-gradient(100% 80% at 30% 80%, rgba(120,80,40,0.12), transparent 55%),
               linear-gradient(180deg, rgba(10,7,4,0.35), rgba(10,7,4,0.6));
 }
 .night-extra { position: absolute; inset: 0; }
 .monitor {
   position: absolute; bottom: 20%; height: 46px; border-radius: 4px;
-  background: rgba(10,20,30,0.85); border: 1px solid rgba(0,220,255,0.5);
-  box-shadow: 0 0 16px rgba(0,200,255,0.35);
+  background: rgba(26,18,11,0.85); border: 1px solid rgba(200,135,79,0.45);
+  box-shadow: 0 0 14px rgba(200,135,79,0.22);
 }
 .m-left { left: 8%; width: 60px; transform: perspective(300px) rotateY(18deg); }
-.m-center { left: 38%; width: 70px; height: 52px; box-shadow: 0 0 18px rgba(0,220,255,0.5); }
+.m-center { left: 38%; width: 70px; height: 52px; box-shadow: 0 0 16px rgba(224,166,104,0.30); }
 .m-right { right: 8%; width: 60px; transform: perspective(300px) rotateY(-18deg); }
 .rgb-underglow {
   position: absolute; left: 6%; right: 6%; bottom: 16%; height: 8px; border-radius: 999px; filter: blur(6px);
-  background: linear-gradient(90deg, rgba(0,220,255,0.7), rgba(160,80,255,0.7), rgba(255,60,180,0.7));
+  background: linear-gradient(90deg, rgba(200,135,79,0.45), rgba(224,166,104,0.6), rgba(200,135,79,0.45));
 }
 .scanlines {
-  position: absolute; inset: 0; opacity: 0.10; pointer-events: none;
-  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 3px);
+  position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(240,230,216,0.35) 0 1px, transparent 1px 3px);
 }
-.spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: rgba(0,220,255,0.9); }
-.rgb-rim {
-  position: absolute; inset: 0; pointer-events: none;
-  box-shadow: inset -40px 0 60px -30px rgba(0,220,255,0.5), inset 40px 0 60px -30px rgba(255,60,180,0.45);
-}
+.spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: rgba(224,166,104,0.85); }
 
 @media (max-width: 860px) {
   /* .persona-scene also carries the .hero-photo class, so its existing !important

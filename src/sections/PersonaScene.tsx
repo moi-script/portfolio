@@ -62,7 +62,6 @@ export function PersonaScene() {
         alt="John Moises"
         style={{ filter: night ? NIGHT_FILTER : DAY_FILTER, transition: 'filter 0.6s ease' }}
       />
-      {night && <div className="rgb-rim" aria-hidden />}
       {/* No mode="wait": old and new scenes overlap so they cross-fade (dissolve) rather than blanking between. */}
       <AnimatePresence>
         <motion.div
