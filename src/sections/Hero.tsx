@@ -40,7 +40,7 @@ export function Hero() {
             <p style={{
               margin: '10px 0 0', fontFamily: "'Syne', sans-serif", fontWeight: 700,
               fontSize: 'clamp(20px, 3vw, 30px)', color: 'var(--accent)',
-            }}>Full-Stack &amp; AI Developer</p>
+            }}>Full-Stack Developer</p>
           </Reveal>
           <Reveal delay={0.16}>
             <p style={{
