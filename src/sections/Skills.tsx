@@ -1,4 +1,5 @@
 import { skillGroups } from '../data/skills'
+import { skillIcons } from '../data/skillIcons'
 import { SectionHeading } from '../components/SectionHeading'
 import { Reveal } from '../components/Reveal'
 
@@ -18,13 +19,20 @@ export function Skills() {
                 fontSize: 18, color: 'var(--fg)',
               }}>{group.category}</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {group.items.map((item) => (
-                  <span key={item} style={{
-                    padding: '6px 12px', borderRadius: 999, fontFamily: "'Fira Code', monospace",
-                    fontSize: 13, color: 'var(--fg-muted)', background: 'color-mix(in srgb, var(--accent) 10%, transparent)',
-                    border: '1px solid var(--border)',
-                  }}>{item}</span>
-                ))}
+                {group.items.map((item) => {
+                  const icon = skillIcons[item]
+                  return (
+                    <span key={item} style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 7,
+                      padding: '6px 12px', borderRadius: 999, fontFamily: "'Fira Code', monospace",
+                      fontSize: 13, color: 'var(--fg-muted)', background: 'color-mix(in srgb, var(--accent) 10%, transparent)',
+                      border: '1px solid var(--border)',
+                    }}>
+                      {icon && <icon.Icon size={15} color={icon.color ?? 'var(--fg)'} aria-hidden />}
+                      {item}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           </Reveal>
