@@ -18,6 +18,8 @@ export interface Project {
   status: 'shipped' | 'in-development'
   year: string
   subject: string
+  /** One-line pitch shown on the home page. */
+  summary: string
   tags: string[]
   accentColor: string
   quote: string
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     status: 'shipped',
     year: '1st Year',
     subject: 'Object Oriented Programming',
+    summary: 'Browser reaction game with a real-time loop and Web Audio sound. 1st place, CpE Week.',
     tags: ['HTML', 'CSS', 'JavaScript', 'DOM', 'Web Audio API'],
     accentColor: '#00ff88',
     quote: 'C++ taught me how computers think. JavaScript showed me code could be beautiful.',
@@ -54,6 +57,7 @@ export const projects: Project[] = [
     status: 'shipped',
     year: '2nd Year',
     subject: 'Data Structures & Algorithms',
+    summary: 'School portal for admins, teachers, and students with real-time WebSocket chat.',
     tags: ['React', 'Node.js', 'Spring Boot', 'WebSocket', 'MongoDB', 'Charts'],
     accentColor: '#7c3aed',
     quote: 'I started frontend first. I suffered miserably. Now I always start with the schema.',
@@ -74,6 +78,7 @@ export const projects: Project[] = [
     status: 'shipped',
     year: '2026–Present',
     subject: 'Personal SaaS Project',
+    summary: 'AI budget tracker: snap a receipt and Azure OCR pulls out the items and prices.',
     tags: ['MongoDB', 'Express', 'React', 'Node.js', 'Azure AI', 'RAG', 'OCR'],
     accentColor: '#00d4ff',
     quote: 'This is where I realized software is a global collaboration.',
@@ -94,6 +99,7 @@ export const projects: Project[] = [
     status: 'in-development',
     year: '2026 · In Development',
     subject: 'Hyperlocal Spatial Commerce Platform',
+    summary: 'Map-first super-app for nearby businesses, errands, microtasks, and HOA admin.',
     tags: ['Next.js 16', 'React 19', 'MapLibre GL', 'Tailwind v4', 'Zustand', 'Three.js', 'Socket.io'],
     accentColor: '#2f6bff',
     quote: 'A whole city, mapped: Pasabuy running on top of a live business map.',
@@ -113,6 +119,7 @@ export const projects: Project[] = [
     status: 'in-development',
     year: '2026 · In Development',
     subject: 'Autonomous AI Crypto Trading Terminal',
+    summary: 'AI crypto trading terminal with live market data, an analysis agent, and paper trading.',
     tags: ['Next.js', 'Express', 'Python', 'MongoDB Atlas', 'Redis', 'Celery', 'Docker', 'Socket.io'],
     accentColor: '#00d4ff',
     quote: 'Trade with the clarity of a machine.',

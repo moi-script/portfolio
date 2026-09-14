@@ -4,9 +4,9 @@ import {
   SiNodedotjs, SiExpress, SiSpringboot, SiJsonwebtokens,
   SiMongodb, SiPostgresql, SiRedis, SiFirebase,
   SiGit, SiGithub, SiDocker, SiPostman, SiVercel, SiRailway,
-  SiCplusplus, SiC, SiPython,
+  SiCplusplus, SiC, SiPython, SiClaude,
 } from 'react-icons/si'
-import { TbApi, TbPlugConnected } from 'react-icons/tb'
+import { TbApi, TbBrandOpenai, TbPlugConnected } from 'react-icons/tb'
 
 export interface SkillIcon {
   Icon: IconType
@@ -44,6 +44,8 @@ export const skillIcons: Record<string, SkillIcon> = {
   Postman: { Icon: SiPostman, color: '#FF6C37' },
   Vercel: { Icon: SiVercel },
   Railway: { Icon: SiRailway },
+  'Claude Code': { Icon: SiClaude, color: '#D97757' },
+  Codex: { Icon: TbBrandOpenai },
   // Languages
   'C++': { Icon: SiCplusplus, color: '#00599C' },
   C: { Icon: SiC, color: '#A8B9CC' },

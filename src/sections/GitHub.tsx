@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { GitHubCalendar } from 'react-github-calendar'
+import { ActivityCalendar } from 'react-activity-calendar'
+import type { Activity } from 'react-activity-calendar'
 import { useTheme } from '../theme/ThemeContext'
 import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
@@ -12,24 +13,24 @@ const coffeeLevels = {
   dark: ['#241812', '#5a3c20', '#8a5424', '#c8874f', '#e0a668'],
 }
 
+interface ContributionsFile {
+  total: number
+  contributions: Activity[]
+}
+
 export function GitHub() {
   const { theme } = useTheme()
-  const [total, setTotal] = useState<number | null>(null)
+  const [data, setData] = useState<ContributionsFile | null>(null)
 
-  // Pull the real last-year total from the same public API the calendar uses,
-  // so the highlighted number stays accurate over time instead of being hardcoded.
+  // Generated from the GitHub profile by scripts/fetch-contributions.mjs,
+  // so the numbers match github.com/moi-script exactly.
   useEffect(() => {
     let alive = true
-    fetch(`https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`)
-      .then((r) => r.json())
-      .then((d: { contributions?: { count: number }[] }) => {
-        if (!alive) return
-        if (Array.isArray(d.contributions)) {
-          setTotal(d.contributions.reduce((sum, c) => sum + (c.count ?? 0), 0))
-        }
-      })
+    fetch('/github-contributions.json')
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d: ContributionsFile) => { if (alive) setData(d) })
       .catch(() => {
-        /* leave total null; the calendar still renders its own data */
+        /* leave the section in its loading state */
       })
     return () => {
       alive = false
@@ -46,7 +47,7 @@ export function GitHub() {
             fontSize: 'clamp(44px, 8vw, 76px)', color: 'var(--accent)',
             textShadow: '0 0 34px color-mix(in srgb, var(--accent) 45%, transparent)',
           }}>
-            {total !== null ? total.toLocaleString() : '—'}
+            {data ? data.total.toLocaleString() : '—'}
           </span>
           <span style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: 'clamp(16px, 2.2vw, 20px)',
@@ -57,20 +58,27 @@ export function GitHub() {
         </div>
       </Reveal>
       <Reveal delay={0.08}>
-        <div style={{
-          background: 'var(--bg-elev)', border: '1px solid var(--border)',
-          borderRadius: 18, padding: 'clamp(20px, 4vw, 36px)', overflowX: 'auto',
-          color: 'var(--fg-muted)', fontFamily: "'DM Sans', sans-serif",
-        }}>
-          <GitHubCalendar
-            username={USERNAME}
+        <a
+          href={`https://github.com/${USERNAME}`}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: 'block', textDecoration: 'none',
+            background: 'var(--bg-elev)', border: '1px solid var(--border)',
+            borderRadius: 18, padding: 'clamp(20px, 4vw, 36px)', overflowX: 'auto',
+            color: 'var(--fg-muted)', fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          <ActivityCalendar
+            data={data?.contributions ?? []}
+            loading={!data}
             colorScheme={theme}
             theme={{ light: coffeeLevels.light, dark: coffeeLevels.dark }}
             fontSize={13}
             blockSize={12}
             showTotalCount={false}
           />
-        </div>
+        </a>
       </Reveal>
     </Section>
   )

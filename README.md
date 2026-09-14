@@ -6,7 +6,7 @@ A personal portfolio site built with React, TypeScript, and Vite — featuring a
 
 - **Cinematic hero** with a persona scene and social links
 - **Unique-visitor counter** — an eye-icon view count powered by the free [Abacus](https://abacus.jasoncameron.dev/) service; each device increments the global count exactly once
-- **GitHub calendar** — live contribution graph via `react-github-calendar`
+- **GitHub calendar** — contribution graph read from the GitHub profile by `scripts/fetch-contributions.mjs` (runs before every build and daily via GitHub Actions), drawn with `react-activity-calendar`
 - **Animated reveals** — scroll-triggered motion with `framer-motion`
 - **Light / dark theme** toggle
 - **Sections** — About, Skills, Projects, Timeline, and Contact
@@ -17,7 +17,7 @@ A personal portfolio site built with React, TypeScript, and Vite — featuring a
 - [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [Vite 7](https://vite.dev/) for dev server and builds
 - [Framer Motion](https://www.framer.com/motion/) for animation
-- [react-icons](https://react-icons.github.io/react-icons/) and [react-github-calendar](https://github.com/grubersjoe/react-github-calendar)
+- [react-icons](https://react-icons.github.io/react-icons/) and [react-activity-calendar](https://github.com/grubersjoe/react-activity-calendar)
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) for tests
 - [ESLint](https://eslint.org/) for linting
 
