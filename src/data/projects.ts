@@ -3,6 +3,10 @@ import triggerImg from '../assets/trigger_game.png'
 import portalImg from '../assets/engr_portal.png'
 import locaImg from '../assets/loca.png'
 import profyImg from '../assets/profy.png'
+import mechatronicsImg from '../assets/mechatronics.png'
+import manixImg from '../assets/manix.png'
+import rfidImg from '../assets/ncst_rfid.png'
+import traceworksImg from '../assets/traceworks.png'
 
 export interface Journey {
   turning_point: string
@@ -91,6 +95,89 @@ export const projects: Project[] = [
       what_i_built: ['Azure OCR', 'RAG System', 'AI Smart Text', 'Vector DB', 'Full MERN Stack', 'Third-party APIs'],
       what_i_learned: "Building Recepta made me humble. Every tool I used, from open source libraries to paid APIs, is the result of real people putting in real work. In the software world, you're never really building alone.",
       milestone: "Pointing a camera at a receipt and watching Azure AI pull out prices, dates, and items into structured data faster than I could read them, then seeing the budget update instantly. That's when I knew full-stack development was my path.",
+    },
+  },
+  {
+    id: 'mechatronic-trainer',
+    name: 'Mechatronic Trainer',
+    status: 'shipped',
+    year: '2026',
+    subject: 'Lab Trainer Board Simulator',
+    summary: 'Browser replica of the mechatronics lab board: wire relays, lamps, and buttons with a live circuit solver.',
+    tags: ['Next.js 15', 'TypeScript', 'SVG', 'Express', 'MongoDB', 'Tailwind v4'],
+    accentColor: '#22c55e',
+    quote: 'Practise the wiring without waiting for the bench.',
+    github: 'https://github.com/moi-script/mechatronics_device',
+    liveDemo: 'https://mechatronicdevice.vercel.app/',
+    image: mechatronicsImg,
+    journey: {
+      turning_point: "Lab time on the real mechatronics trainer is limited, so I rebuilt the board in the browser. The inventory matches the physical panel exactly: breaker, power supply, push buttons, toggle switches, lamps, and relays.",
+      the_struggle: "Making leads behave like real banana plugs: stacking into towers, refusing female-to-female or looping chains, and re-solving the whole circuit on every interaction. Keeping that logic out of React was the key decision.",
+      what_i_built: ['Net Solver', 'SVG Wiring Board', 'Stacking Leads', 'Undo / Redo', 'Save & Share Links', 'Practice Timer'],
+      what_i_learned: "Separating a pure, dependency-free simulation package from the UI makes the hard part testable on its own. The web app became a thin consumer of the solver.",
+      milestone: "Classmates can wire a full relay circuit, see faults flagged live, and share a read-only link to their board, all without touching the lab bench.",
+    },
+  },
+  {
+    id: 'ncst-rfid',
+    name: 'NCST RFID System',
+    status: 'shipped',
+    year: '2026',
+    subject: 'Centralized Campus Access & Attendance',
+    summary: 'One RFID card per person at every campus gate: scans, attendance, vehicles, and an admin console.',
+    tags: ['Next.js 16', 'TypeScript', 'Express', 'MongoDB', 'JWT', 'Docker'],
+    accentColor: '#1d4ed8',
+    quote: 'One card, every gate.',
+    github: 'https://github.com/moi-script/shared_access_rfid',
+    liveDemo: 'https://ncst-rfid.vercel.app/login',
+    image: rfidImg,
+    journey: {
+      turning_point: "A centralized RFID system for NCST where a single card works at every person and vehicle gate, with registration, attendance logging, and reporting behind it.",
+      the_struggle: "Real gates are messy: missed exit taps, expiring vehicle passes, rate limits, and several roles (superadmin, registrar, staff, students) that each see different things from one login form.",
+      what_i_built: ['Gate Scan API', 'Attendance Logs', 'Vehicle Passes', 'Role-based Console', 'CSV Bulk Import', 'Refresh Token Rotation'],
+      what_i_learned: "Security details matter in production: short-lived access tokens, rotated httpOnly refresh cookies, Zod validation, and making sure the login never reveals which accounts are privileged.",
+      milestone: "A deployed backend on Render and admin console on Vercel, with live gate status and scan activity for the whole campus.",
+    },
+  },
+  {
+    id: 'manix',
+    name: 'Manix',
+    status: 'shipped',
+    year: '2026',
+    subject: 'Manhwa Reader',
+    summary: 'Fast, ad-free manhwa reader built on the MangaDex API with a caching image proxy.',
+    tags: ['Next.js', 'TypeScript', 'Express', 'MongoDB', 'MangaDex API'],
+    accentColor: '#facc15',
+    quote: 'No ads, no paywalls, just reading.',
+    github: 'https://github.com/moi-script/manix',
+    liveDemo: 'https://readmanix.vercel.app/',
+    image: manixImg,
+    journey: {
+      turning_point: "I wanted a clean, fast place to read manhwa without ads, so I built one on top of the MangaDex API while following its rules to the letter.",
+      the_struggle: "Every request and image goes through my own server: rate limiting against MangaDex, reporting MangaDex@Home node fetches, caching images at the edge, and honoring scanlation group removal requests.",
+      what_i_built: ['Browse & Search', 'Library & History', 'Image Proxy + Cache', 'Rate Limiting', 'Accounts', 'Group Blocklist'],
+      what_i_learned: "Building on someone else's API means respecting their terms as a first-class feature, and caching strategy (immutable covers, short-lived chapter pages) decides how fast the site feels.",
+      milestone: "Thousands of titles browsable in a snappy reader, deployed and credited properly to MangaDex and the scanlation groups.",
+    },
+  },
+  {
+    id: 'traceworks',
+    name: 'TraceWorks',
+    status: 'shipped',
+    year: '2026',
+    subject: 'PCB Pen-Plotter Pipeline',
+    summary: 'Upload a KiCad board or image, route it to G-code, preview the toolpath, and plot it over USB to GRBL.',
+    tags: ['Next.js 15', 'FastAPI', 'Python', 'GRBL', 'MongoDB', 'WebSocket'],
+    accentColor: '#c2410c',
+    quote: 'Plot a real PCB from your browser.',
+    github: 'https://github.com/moi-script/pcb_ui',
+    image: traceworksImg,
+    journey: {
+      turning_point: "TraceWorks takes a single-layer KiCad board, works out a pen plot that doesn't waste motion, and sends it straight to an Arduino plotter, so you don't need a separate G-code sender.",
+      the_struggle: "A browser tab can't open a serial port, so a local FastAPI backend owns the COM link, streams G-code under GRBL's character-counting flow control, and pushes position and progress back over WebSocket.",
+      what_i_built: ['KiCad Parser', 'G-code Router', 'Image Tracer', 'Toolpath Preview', 'Jog & Zero Controls', 'Windows Installer'],
+      what_i_learned: "Hardware is honest: GRBL acknowledges a line when it's queued, not drawn, so the UI shows both progress and real position and names them for what they are.",
+      milestone: "A board going from KiCad file to pen on copper with 92% less pen travel, shipped as an installable Windows app with a hardware simulator for testing.",
     },
   },
   {
