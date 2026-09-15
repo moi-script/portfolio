@@ -12,7 +12,10 @@ const LINKEDIN = 'https://www.linkedin.com/in/your-handle' // TODO: replace
 const EMAIL = 'nugalmoises62@gmail.com'
 
 // Strongest work first.
-const PROJECT_ORDER = ['recepta', 'profy', 'loca', 'engineering-portal', 'game-trigger']
+const PROJECT_ORDER = [
+  'recepta', 'mechatronic-trainer', 'traceworks', 'ncst-rfid', 'manix',
+  'profy', 'loca', 'engineering-portal', 'game-trigger',
+]
 const orderedProjects = PROJECT_ORDER
   .map((id) => projects.find((p) => p.id === id))
   .filter((p): p is Project => Boolean(p))
