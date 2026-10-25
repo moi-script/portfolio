@@ -1,9 +1,11 @@
 import type { IconType } from 'react-icons'
 import { FiDatabase, FiLayout, FiServer, FiTool } from 'react-icons/fi'
+import { TbScanEye } from 'react-icons/tb'
 import { skillGroups } from '../data/skills'
 import { skillIcons } from '../data/skillIcons'
 
 const GROUP_ICONS: Record<string, IconType> = {
+  'AI & Vision': TbScanEye,
   Frontend: FiLayout,
   Backend: FiServer,
   Database: FiDatabase,
@@ -12,7 +14,7 @@ const GROUP_ICONS: Record<string, IconType> = {
 
 const SHORT_NAMES: Record<string, string> = { 'DevOps & Tools': 'Tools' }
 
-// "Languages" only repeats the other groups, so the landing shows the four core ones.
+// "Languages" only repeats the other groups, so the landing shows the rest.
 const groups = skillGroups.filter((g) => g.category in GROUP_ICONS)
 
 export function TechStack() {

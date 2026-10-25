@@ -32,7 +32,14 @@ export const acts: Act[] = [
     id: 'recepta',
     index: '04',
     title: 'Building Recepta',
+    kicker: '2026',
+    body: "I built Recepta, which I want to turn into my first SaaS. It runs on the MERN stack with Azure OCR and RAG. Almost every part of it leans on an open source library or someone else's API, and it made me realize how much of software is people building on each other's work.",
+  },
+  {
+    id: 'mechatronics-vision',
+    index: '05',
+    title: 'Mechatronics and computer vision',
     kicker: 'Now',
-    body: "Right now I'm working on Recepta, which I want to turn into my first SaaS. It runs on the MERN stack with Azure OCR and RAG. Almost every part of it leans on an open source library or someone else's API, and it made me realize how much of software is people building on each other's work.",
+    body: "Now I'm moving closer to hardware and vision. I rebuilt our mechatronics lab trainer in the browser, made a pen plotter that draws PCBs, and built Somnus, a wearable band with its own Android app. Most of my learning time goes into computer vision and AI: training detection models in Roboflow and using NotebookLM to study papers and docs.",
   },
 ]

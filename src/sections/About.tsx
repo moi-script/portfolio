@@ -11,8 +11,10 @@ export function About() {
           margin: 0, maxWidth: 720, fontFamily: "'DM Sans', sans-serif",
           fontSize: 19, lineHeight: 1.7, color: 'var(--fg-muted)',
         }}>
-          I'm a Computer Engineering student who builds full-stack web apps, and lately
-          most of my time goes into adding AI features like receipt OCR and RAG.
+          I'm a Computer Engineering student. I started with full-stack web apps and AI
+          features like receipt OCR and RAG, and now I'm working closer to the physical
+          world: computer vision models in Roboflow, ESP32 sensor boards, and the
+          mechatronics projects that tie them together.
         </p>
       </Reveal>
     </Section>

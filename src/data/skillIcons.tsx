@@ -5,6 +5,7 @@ import {
   SiMongodb, SiPostgresql, SiRedis, SiFirebase,
   SiGit, SiGithub, SiDocker, SiPostman, SiVercel, SiRailway,
   SiCplusplus, SiC, SiPython, SiClaude,
+  SiRoboflow, SiGoogle,
 } from 'react-icons/si'
 import { TbApi, TbBrandOpenai, TbPlugConnected } from 'react-icons/tb'
 
@@ -17,6 +18,9 @@ export interface SkillIcon {
 
 // Keys must match the item strings in skills.ts exactly.
 export const skillIcons: Record<string, SkillIcon> = {
+  // AI & Vision
+  Roboflow: { Icon: SiRoboflow, color: '#6706CE' },
+  NotebookLM: { Icon: SiGoogle, color: '#4285F4' },
   // Frontend
   React: { Icon: SiReact, color: '#61DAFB' },
   TypeScript: { Icon: SiTypescript, color: '#3178C6' },
