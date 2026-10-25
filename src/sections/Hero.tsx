@@ -5,7 +5,7 @@ import { ViewCount } from '../components/ViewCount'
 import { PersonaScene } from './PersonaScene'
 import { useTheme } from '../theme/ThemeContext'
 
-const RESUME = '/Moises_Nugal_CV_Polished.docx' // current CV
+const RESUME = '/John_Moises_Nugal_Resume_2026.docx' // current CV
 const GITHUB = 'https://github.com/moi-script'
 const LINKEDIN = 'https://www.linkedin.com/in/your-handle' // TODO: replace
 const EMAIL = 'nugalmoises62@gmail.com'

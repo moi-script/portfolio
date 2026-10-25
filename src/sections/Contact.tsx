@@ -5,7 +5,7 @@ import { Reveal } from '../components/Reveal'
 const GITHUB = 'https://github.com/moi-script'
 const EMAIL = 'nugalmoises62@gmail.com'
 const LINKEDIN = 'https://www.linkedin.com/in/your-handle' // TODO: replace
-const RESUME = '/Moises_Nugal_CV_Polished.docx' // current CV
+const RESUME = '/John_Moises_Nugal_Resume_2026.docx' // current CV
 
 const LINKS = [
   { label: 'Email', href: `mailto:${EMAIL}`, value: EMAIL },
