@@ -10,7 +10,7 @@ const USERNAME = 'moi-script'
 
 const coffeeLevels = {
   light: ['#eaddc9', '#e0c39a', '#cf9d63', '#b87a3d', '#8a5424'],
-  dark: ['#241812', '#5a3c20', '#8a5424', '#c8874f', '#e0a668'],
+  dark: ['#161616', '#0e4429', '#006d32', '#26a641', '#39d353'],
 }
 
 interface ContributionsFile {

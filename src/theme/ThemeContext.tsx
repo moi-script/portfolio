@@ -8,7 +8,7 @@ const Ctx = createContext<ThemeCtx | null>(null)
 
 function initialTheme(): Theme {
   const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('moi-theme') : null
-  return stored === 'dark' ? 'dark' : 'light' // light-first; ignore system
+  return stored === 'light' ? 'light' : 'dark' // dark-first; ignore system
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

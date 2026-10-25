@@ -7,6 +7,7 @@ import mechatronicsImg from '../assets/mechatronics.png'
 import manixImg from '../assets/manix.png'
 import rfidImg from '../assets/ncst_rfid.png'
 import traceworksImg from '../assets/traceworks.png'
+import somnusImg from '../assets/somnus.jpg'
 
 export interface Journey {
   turning_point: string
@@ -19,7 +20,7 @@ export interface Journey {
 export interface Project {
   id: string
   name: string
-  status: 'shipped' | 'in-development'
+  status: 'shipped' | 'experimental' | 'in-development'
   year: string
   subject: string
   /** One-line pitch shown on the home page. */
@@ -28,8 +29,11 @@ export interface Project {
   accentColor: string
   quote: string
   journey: Journey
-  github: string
+  /** Omitted for private repos. */
+  github?: string
   liveDemo?: string
+  /** Label for the liveDemo link; defaults to "Live". */
+  liveLabel?: string
   image?: string
 }
 
@@ -107,7 +111,6 @@ export const projects: Project[] = [
     tags: ['Next.js 15', 'TypeScript', 'SVG', 'Express', 'MongoDB', 'Tailwind v4'],
     accentColor: '#22c55e',
     quote: 'Practise the wiring without waiting for the bench.',
-    github: 'https://github.com/moi-script/mechatronics_device',
     liveDemo: 'https://mechatronicdevice.vercel.app/',
     image: mechatronicsImg,
     journey: {
@@ -128,7 +131,6 @@ export const projects: Project[] = [
     tags: ['Next.js 16', 'TypeScript', 'Express', 'MongoDB', 'JWT', 'Docker'],
     accentColor: '#1d4ed8',
     quote: 'One card, every gate.',
-    github: 'https://github.com/moi-script/shared_access_rfid',
     liveDemo: 'https://ncst-rfid.vercel.app/login',
     image: rfidImg,
     journey: {
@@ -218,6 +220,47 @@ export const projects: Project[] = [
       what_i_built: ['Live Market Data', 'AI Analysis Agent', 'Paper Trading Engine', 'Position Lifecycle', 'Real-time Dashboard', 'Celery Workers'],
       what_i_learned: "How production trading infrastructure actually fits together: real-time streaming over Socket.io, caching hot data in Redis, and running heavy AI analysis off the request path with Celery so the terminal stays responsive.",
       milestone: "A working terminal that streams real-time markets, runs AI-powered insights off the main thread, and simulates a full trade lifecycle end to end. It's the closest I've come to building something a serious trader could actually use.",
+    },
+  },
+  {
+    id: 'somnus',
+    name: 'Somnus',
+    status: 'experimental',
+    year: '2026 · Experimental release',
+    subject: 'Wearable Sleep & Health Monitor',
+    summary: 'Wearable band + room radar streaming to an Android app and live dashboard. APK released, still experimental.',
+    tags: ['ESP32', 'BLE', 'Capacitor', 'Next.js', 'Express', 'MongoDB', 'SSE'],
+    accentColor: '#8b7cf6',
+    quote: 'The phone is the bridge.',
+    github: 'https://github.com/moi-script/somnus',
+    liveDemo: 'https://github.com/moi-script/somnus/releases/latest',
+    liveLabel: 'APK',
+    image: somnusImg,
+    journey: {
+      turning_point: "Somnus is the software around a wearable I built: a XIAO ESP32-C3 band with pulse, motion, and skin-response sensors, plus a room unit with a presence radar that controls a smart bulb.",
+      the_struggle: "A deployed server has no Bluetooth radio, so the phone has to be the bridge. The app connects over BLE, writes every frame to SQLite first, and uploads when it has a network, so nothing is lost out of range.",
+      what_i_built: ['Android App (Capacitor)', 'BLE Bridge', 'Offline SQLite Buffer', 'Live SSE Dashboard', 'Command Queue', 'Shared zod Contracts'],
+      what_i_learned: "Defining the payload format once and sharing it everywhere means a format change breaks the build, not the device. And the radar senses the room, not the bed, so the app never claims to know when you were asleep.",
+      milestone: "A released Android APK (v0.7.x) that records a whole night, syncs it later, and shows time in the room, interruptions, and lighting in a Sleep tab.",
+    },
+  },
+  {
+    id: 'lacs-band',
+    name: 'Band Firmware',
+    status: 'experimental',
+    year: '2026',
+    subject: 'ESP32-C3 Sensor Node',
+    summary: 'Firmware for the Somnus band: PPG, IMU, and GSR sensors, haptics, and a versioned JSON payload over BLE.',
+    tags: ['C++', 'Arduino', 'ESP32-C3', 'NimBLE', 'MAX30102', 'MPU6050'],
+    accentColor: '#22c55e',
+    quote: 'Unplug a sensor, it says OFFLINE. Plug it back, it recovers.',
+    github: 'https://github.com/moi-script/sleep_monitoring',
+    journey: {
+      turning_point: "The firmware half of Somnus. It reads a MAX30102 pulse sensor, an MPU6050 accelerometer, and a Grove GSR sensor, and drives a vibration motor and status LED.",
+      the_struggle: "Two I2C devices on one bus, a boot-strapping pin under the GSR sensor, and one serial port carrying both human-readable logs and JSON frames that the host has to tell apart.",
+      what_i_built: ['Sensor Hub', 'Hot-plug Re-probing', 'BLE Transport', 'Haptics', 'Pedometer', 'Versioned Payload'],
+      what_i_learned: "Hardware needs a contract as much as an API does. Every frame is versioned JSON, and sensors are re-probed every 5 seconds so a loose cable is reported instead of silently failing.",
+      milestone: "A band that boots, reports 3/3 sensors online, and advertises over BLE to the Somnus app.",
     },
   },
 ]
