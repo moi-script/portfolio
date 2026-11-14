@@ -333,15 +333,6 @@ body, html {
   .aurora span, .showcase::after { animation: none; }
 }
 
-.home-more {
-  align-self: flex-start;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--fg-faint);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.home-more:hover { color: var(--accent); }
 
 /* ---------- Showcase panel: light (latte) theme ---------- */
 :root[data-theme="light"] .showcase {
@@ -514,25 +505,10 @@ body, html {
   font-family: 'Fira Code', monospace;
   font-size: 10.5px;
   line-height: 1.7;
-  color: #7ee0a8;
+  color: var(--accent-2);
   opacity: 0.6;
   background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px), #0a0c0a;
 }
-.bento-status {
-  position: absolute;
-  top: 8px; right: 8px;
-  padding: 2px 7px;
-  border-radius: 999px;
-  font-family: 'Fira Code', monospace;
-  font-size: 9.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: rgba(5, 5, 5, 0.8);
-  border: 1px solid currentColor;
-}
-.bento-status.is-shipped { color: #7ee0a8; }
-.bento-status.is-experimental { color: #b3a6ff; }
-.bento-status.is-in-development { color: #e0a668; }
 .bento-body { padding: 10px 12px 12px; }
 .bento-body h3 {
   margin: 0;
@@ -585,8 +561,8 @@ body, html {
   transition: background 0.2s;
 }
 .bento-links a:hover { background: rgba(255, 255, 255, 0.12); }
-.bento-links a.is-primary { color: #06140c; background: #7ee0a8; border-color: #7ee0a8; }
-.bento-links a.is-primary:hover { background: #a3ecc2; }
+.bento-links a.is-primary { color: #1a120b; background: var(--accent); border-color: var(--accent); }
+.bento-links a.is-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
 .bento-links a:focus-visible, .bbox a:focus-visible { outline: 2px solid var(--detect); outline-offset: 2px; }
 @media (max-width: 420px) {
   .bento-foot { flex-direction: column; align-items: flex-start; }

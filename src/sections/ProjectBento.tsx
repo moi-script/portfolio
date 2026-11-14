@@ -9,12 +9,6 @@ const LAYOUT: [id: string, size?: 'xl' | 'wide'][] = [
   ['profy'], ['loca'], ['engineering-portal'], ['game-trigger'],
 ]
 
-const STATUS: Record<Project['status'], string> = {
-  shipped: 'Shipped',
-  experimental: 'Experimental',
-  'in-development': 'In dev',
-}
-
 function Tile({ project, size }: { project: Project; size?: 'xl' | 'wide' }) {
   return (
     <article className={`bento-tile${size ? ` is-${size}` : ''}`}>
@@ -26,7 +20,6 @@ function Tile({ project, size }: { project: Project; size?: 'xl' | 'wide' }) {
           {project.tags.map((t) => `[ OK ] ${t}`).join('\n')}
         </pre>
       )}
-      <span className={`bento-status is-${project.status}`}>{STATUS[project.status]}</span>
       <div className="bento-body">
         <h3>{project.name}</h3>
         {size && <p className="bento-summary">{project.summary}</p>}

@@ -1,3 +1,4 @@
+import { TbSun, TbMoon } from 'react-icons/tb'
 import { useTheme } from '../theme/ThemeContext'
 
 export function ThemeToggle() {
@@ -14,7 +15,7 @@ export function ThemeToggle() {
         transition: 'all 0.2s',
       }}
     >
-      {theme === 'light' ? '☀' : '☾'}
+      {theme === 'light' ? <TbSun size={18} /> : <TbMoon size={18} />}
     </button>
   )
 }
