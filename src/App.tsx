@@ -1,6 +1,5 @@
 import { Footer } from './components/Footer'
 import { Home } from './sections/Home'
-import { NowPanel } from './sections/NowPanel'
 import { About } from './sections/About'
 import { GitHub } from './sections/GitHub'
 import { Timeline } from './sections/Timeline'
@@ -13,7 +12,6 @@ export default function App() {
         {/* Landing: everything important on one screen */}
         <Home />
         {/* More detail for anyone who scrolls */}
-        <NowPanel />
         <About />
         <GitHub />
         <Timeline />

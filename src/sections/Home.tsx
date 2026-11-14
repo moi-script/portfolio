@@ -54,7 +54,6 @@ export function Home() {
 
           <TechStack />
 
-          <a href="#now" className="home-more">What I'm working on now ↓</a>
         </section>
 
         {/* Right: every project, sized to fit the first screen */}

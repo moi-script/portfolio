@@ -1,7 +1,6 @@
 import type { Project } from '../data/projects'
 
 export function ProjectCard({ project }: { project: Project }) {
-  const shipped = project.status === 'shipped'
   return (
     <article style={{
       background: 'var(--bg-elev)', border: '1px solid var(--border)', borderRadius: 18,
@@ -14,12 +13,6 @@ export function ProjectCard({ project }: { project: Project }) {
       {project.image && (
         <div style={{ position: 'relative', aspectRatio: '16 / 10', overflow: 'hidden', background: '#000' }}>
           <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          <span style={{
-            position: 'absolute', top: 12, left: 12, padding: '4px 10px', borderRadius: 999,
-            fontFamily: "'Fira Code', monospace", fontSize: 11, letterSpacing: '0.05em',
-            background: 'var(--scrim)', border: '1px solid var(--scrim-border)',
-            color: shipped ? '#7ee0a8' : '#e0a668',
-          }}>{shipped ? 'SHIPPED' : 'IN DEVELOPMENT'}</span>
         </div>
       )}
       <div style={{ padding: 22, display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
